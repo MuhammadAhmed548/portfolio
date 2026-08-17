@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Your Name — Mobile Developer</title>
-<meta name="description" content="Portfolio of a mobile developer. Seven apps, built end to end.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Muhammad Ahmed — Senior iOS Developer</title>
+<meta name="description" content="Senior iOS developer. Swift, UIKit, SwiftUI, real-time messaging and MVVM architecture.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -13,435 +13,476 @@
    TOKENS
    ============================================================ */
 :root{
-  --ink:        #0A0810;
-  --wall-top:   #241A3E;
-  --wall-mid:   #16182F;
-  --wall-btm:   #0C0F1C;
-  --glass:      rgba(255,255,255,.065);
-  --glass-2:    rgba(255,255,255,.10);
-  --line:       rgba(255,255,255,.13);
-  --text:       #F4F1FA;
-  --muted:      #A29CB8;
-  --dim:        #6E6885;
-  --apricot:    #FFB367;
-  --mint:       #6FE3C0;
-  --rose:       #FF7E9D;
-
-  --display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
-  --body:    "Figtree", ui-sans-serif, system-ui, sans-serif;
-  --mono:    "JetBrains Mono", ui-monospace, monospace;
-
-  --ease: cubic-bezier(.22,1,.36,1);
+  --ink:#0A0810;
+  --glass:rgba(255,255,255,.055); --glass-2:rgba(255,255,255,.09);
+  --line:rgba(255,255,255,.12);
+  --text:#F4F1FA; --muted:#A29CB8; --dim:#6E6885;
+  --apricot:#FFB367; --mint:#6FE3C0;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:"Figtree",ui-sans-serif,system-ui,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --pad:clamp(20px,5vw,70px);
+  --max:1180px;
 }
-
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
 body{
   background:
-    radial-gradient(900px 700px at 12% -10%, #2A1B4A 0%, transparent 60%),
-    radial-gradient(700px 600px at 100% 110%, #14304A 0%, transparent 55%),
+    radial-gradient(900px 700px at 10% -8%,#2A1B4A 0%,transparent 58%),
+    radial-gradient(800px 700px at 100% 22%,#14304A 0%,transparent 55%),
     var(--ink);
-  color:var(--text);
-  font-family:var(--body);
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  background-attachment:fixed;
+  color:var(--text);font-family:var(--body);font-size:16px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-a{color:inherit}
+a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
-:focus-visible{outline:2px solid var(--apricot);outline-offset:3px;border-radius:6px}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--apricot);outline-offset:4px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+
+.eyebrow{
+  font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--apricot);display:flex;align-items:center;gap:10px;margin-bottom:16px;
+}
+.eyebrow::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--line),transparent)}
+h2.sec{
+  font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-height:1.02;
+  font-size:clamp(32px,4.6vw,54px);margin-bottom:14px;
+}
+.sec-note{color:var(--muted);font-size:16px;line-height:1.65;max-width:56ch}
+section{padding-block:clamp(64px,9vw,116px)}
 
 /* ============================================================
-   STAGE
+   NAV
    ============================================================ */
-.stage{
-  min-height:100dvh;
-  display:flex;align-items:center;justify-content:center;
-  gap:clamp(32px,7vw,110px);
-  padding:40px 24px;
+.nav{
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,8,16,.72);border-bottom:1px solid transparent;
+  transition:border-color .3s;
+}
+.nav.stuck{border-bottom-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:66px;gap:20px}
+.brand{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.02em;white-space:nowrap}
+.brand i{color:var(--mint);font-style:normal}
+.navlinks{display:flex;gap:4px;align-items:center}
+.navlinks a{font-size:13.5px;color:var(--muted);padding:8px 13px;border-radius:9px;transition:.2s var(--ease)}
+.navlinks a:hover{color:var(--text);background:var(--glass)}
+.navlinks a.active{color:var(--text);background:var(--glass-2)}
+.nav .cta{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;
+  padding:9px 16px;border-radius:999px;border:1px solid var(--line);
+  white-space:nowrap;transition:.22s var(--ease);
+}
+.nav .cta:hover{border-color:var(--apricot);color:var(--apricot)}
+@media(max-width:820px){.navlinks{display:none}}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,6vw,80px);
+  align-items:center;padding-block:clamp(48px,7vw,86px) clamp(56px,8vw,100px);
+}
+.status{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:26px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--mint);background:rgba(111,227,192,.09);
+  border:1px solid rgba(111,227,192,.26);padding:7px 14px;border-radius:999px;
+}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--mint);
+  box-shadow:0 0 0 0 rgba(111,227,192,.6);animation:pulse 2.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(111,227,192,0)}100%{box-shadow:0 0 0 0 rgba(111,227,192,0)}}
+.hero h1{
+  font-family:var(--display);font-weight:800;
+  font-size:clamp(42px,6.4vw,84px);line-height:.94;letter-spacing:-.04em;margin-bottom:24px;
+}
+.hero h1 em{font-style:normal;color:var(--mint);display:block}
+.identity{display:flex;align-items:center;gap:15px;margin-bottom:26px;text-align:left}
+.portrait{
+  width:66px;height:66px;border-radius:21px;flex-shrink:0;overflow:hidden;
+  display:grid;place-items:center;position:relative;
+  background:linear-gradient(145deg,var(--apricot),#FF7E9D);
+  font-family:var(--display);font-weight:800;font-size:23px;color:#1A1024;
+  box-shadow:0 0 0 1px var(--line),0 14px 30px -12px rgba(0,0,0,.8);
+}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.identity .who strong{
+  display:block;font-family:var(--display);font-size:20px;font-weight:800;
+  letter-spacing:-.025em;line-height:1.15;
+}
+.identity .role-line{margin-bottom:0;margin-top:5px}
+.role-line{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--apricot);margin-bottom:20px;
+}
+.lede{color:var(--muted);font-size:clamp(16px,1.6vw,18.5px);line-height:1.68;max-width:46ch}
+.hero-actions{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:14px 24px;border-radius:12px;font-size:14.5px;font-weight:600;
+  transition:.24s var(--ease);
+}
+.btn-primary{background:var(--apricot);color:#1A1024}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 28px -10px rgba(255,179,103,.6)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:rgba(255,255,255,.35);background:var(--glass)}
+.stats{display:flex;gap:30px;margin-top:44px;flex-wrap:wrap}
+.stat b{display:block;font-family:var(--display);font-size:28px;font-weight:800;letter-spacing:-.03em}
+.stat span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+
+/* hero phone = clickable table of contents */
+.hero-phone{justify-self:center;width:100%;max-width:280px}
+.phone{
+  border-radius:42px;padding:9px;
+  background:linear-gradient(160deg,#3A3550,#141220 45%,#2C2840);
+  box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 80px -22px rgba(0,0,0,.85),
+             0 0 110px -40px rgba(120,80,220,.5);
+}
+.phone-screen{
+  border-radius:34px;overflow:hidden;position:relative;
+  background:linear-gradient(178deg,#241A3E,#16182F 52%,#0C0F1C);
+  aspect-ratio:9/18.6;padding:34px 16px 16px;
+}
+.phone-screen::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(220px 180px at 80% 6%,rgba(255,179,103,.2),transparent 70%),
+             radial-gradient(200px 200px at 6% 90%,rgba(111,227,192,.14),transparent 70%);
+}
+.phone-bar{
+  position:absolute;top:0;left:0;right:0;height:30px;padding:0 18px;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  font-size:11px;font-weight:600;
+}
+.phone-hint{
+  position:relative;z-index:2;font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center;margin-bottom:14px;
+}
+.icons{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:15px 5px}
+.ic{display:flex;flex-direction:column;align-items:center;gap:5px;transition:transform .2s var(--ease)}
+.ic:hover{transform:translateY(-3px)}
+.ic:active{transform:scale(.9)}
+.ic .sq{
+  width:46px;height:46px;border-radius:14px;display:grid;place-items:center;position:relative;
+  overflow:hidden;font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:-.02em;color:#120C1C;
+  box-shadow:0 6px 16px -5px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.35);
+}
+.ic .sq::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.32),transparent 55%)}
+.ic .sq img{width:100%;height:100%;object-fit:cover}
+.ic small{font-size:8.5px;color:rgba(255,255,255,.85);text-align:center;line-height:1.2;
+  text-shadow:0 1px 3px rgba(0,0,0,.6);max-width:56px}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center}
+  .lede{margin-inline:auto}
+  .hero-actions,.stats,.eyebrow,.identity{justify-content:center}
+  .identity{text-align:left}
+  .hero-phone{order:-1;max-width:250px}
 }
 
-/* --- left column ------------------------------------------ */
-.intro{max-width:400px;flex-shrink:1}
-.eyebrow{
-  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--apricot);display:flex;align-items:center;gap:9px;margin-bottom:22px;
+/* ============================================================
+   EXPERIENCE TIMELINE
+   ============================================================ */
+.timeline{margin-top:44px}
+.tl{position:relative;padding-left:30px;padding-bottom:46px;border-left:1px solid var(--line)}
+.tl:last-child{padding-bottom:0;border-left-color:transparent}
+.tl::before{
+  content:"";position:absolute;left:-5px;top:7px;width:9px;height:9px;border-radius:50%;
+  background:var(--apricot);box-shadow:0 0 0 5px var(--ink);
 }
-.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--apricot);
-  box-shadow:0 0 0 0 rgba(255,179,103,.6);animation:pulse 2.6s infinite}
-@keyframes pulse{
-  0%{box-shadow:0 0 0 0 rgba(255,179,103,.55)}
-  70%{box-shadow:0 0 0 11px rgba(255,179,103,0)}
-  100%{box-shadow:0 0 0 0 rgba(255,179,103,0)}
+.tl-co{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.tl-co h3{font-family:var(--display);font-size:clamp(20px,2.4vw,25px);font-weight:800;letter-spacing:-.025em;line-height:1.15}
+.tl-co a:hover{color:var(--apricot)}
+.tl-meta{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--dim);
 }
-.intro h1{
-  font-family:var(--display);
-  font-size:clamp(46px,5.6vw,78px);
-  font-weight:800;line-height:.94;letter-spacing:-.035em;
-  margin-bottom:20px;
+.tl-role{margin-top:24px}
+.tl-role:first-of-type{margin-top:18px}
+.tl-role h4{font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+.tl-role .dates{font-family:var(--mono);font-size:10.5px;letter-spacing:.09em;color:var(--mint);margin-top:5px}
+.tl-role ul{list-style:none;margin-top:13px}
+.tl-role li{position:relative;padding-left:19px;font-size:14.6px;line-height:1.72;color:#D6D1E4;margin-bottom:9px}
+.tl-role li::before{
+  content:"";position:absolute;left:0;top:11px;width:8px;height:1px;background:var(--dim);
 }
-.intro h1 em{font-style:normal;display:block;color:var(--mint)}
-.intro p{color:var(--muted);font-size:16.5px;line-height:1.65;max-width:38ch}
-.intro .hint{
-  margin-top:30px;font-family:var(--mono);font-size:12px;color:var(--dim);
-  display:flex;align-items:center;gap:10px;
+.p-co{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:9px;
 }
-.intro .hint svg{flex-shrink:0}
-.social{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}
-.social a{
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;
-  padding:9px 15px;border:1px solid var(--line);border-radius:999px;
-  text-decoration:none;color:var(--muted);
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.project{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);
+  align-items:center;padding-block:clamp(38px,5vw,58px);
+  border-top:1px solid var(--line);
+}
+.project:nth-child(even) .p-media{order:-1}
+.p-head{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.p-head .sq{
+  width:52px;height:52px;border-radius:16px;flex-shrink:0;position:relative;overflow:hidden;
+  display:grid;place-items:center;
+  font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.02em;color:#120C1C;
+  box-shadow:0 8px 20px -7px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.35);
+}
+.p-head .sq::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(255,255,255,.32),transparent 55%)}
+.p-head .sq img{width:100%;height:100%;object-fit:cover}
+.p-head h3{font-family:var(--display);font-size:clamp(25px,3vw,33px);font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.p-tag{color:var(--muted);font-size:16px;line-height:1.6;margin-bottom:22px}
+.p-block{margin-bottom:18px}
+.p-block h4{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--dim);margin-bottom:7px;
+}
+.p-block p{font-size:14.8px;line-height:1.75;color:#D6D1E4}
+.p-hard{
+  border-left:2px solid var(--tint,var(--apricot));padding-left:16px;
+  background:linear-gradient(90deg,rgba(255,255,255,.035),transparent 70%);
+  padding-block:4px;
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0}
+.chip{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:6px 11px;border-radius:8px;
+  background:var(--glass);border:1px solid var(--line);color:var(--muted);
+}
+.p-links{display:flex;gap:10px;flex-wrap:wrap}
+.p-links a{
+  display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:500;
+  padding:11px 18px;border-radius:10px;border:1px solid var(--line);transition:.22s var(--ease);
+}
+.p-links a:hover{border-color:var(--tint,var(--apricot));color:var(--tint,var(--apricot));transform:translateY(-2px)}
+
+.p-media{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 16px;scrollbar-width:none}
+.p-media::-webkit-scrollbar{display:none}
+.frame{
+  flex:0 0 170px;border-radius:26px;padding:6px;
+  background:linear-gradient(160deg,#3A3550,#141220 45%,#2C2840);
+  box-shadow:0 0 0 1px rgba(255,255,255,.07),0 24px 50px -18px rgba(0,0,0,.8);
+  transition:transform .3s var(--ease);
+}
+.frame:hover{transform:translateY(-6px)}
+.frame .inner{
+  border-radius:21px;overflow:hidden;aspect-ratio:9/19.5;background:#0D0B16;
+  display:grid;place-items:center;
+}
+.frame img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.p-banner{
+  grid-column:1 / -1;display:block;border-radius:18px;overflow:hidden;
+  border:1px solid var(--line);background:#0D0B16;cursor:zoom-in;
+  box-shadow:0 26px 60px -26px rgba(0,0,0,.85);
+  transition:transform .3s var(--ease),border-color .3s var(--ease);
+}
+.p-banner:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.28)}
+.p-banner img{width:100%;height:auto}
+.project.banner-only{grid-template-columns:1fr}
+.project.banner-only .p-copy{max-width:840px}
+.shot-wrap{flex:0 0 170px;display:flex;flex-direction:column;gap:9px}
+.shot-wrap .frame{flex:none;width:100%}
+.shot-cap{
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.06em;color:var(--dim);
+  text-align:center;line-height:1.5;padding-inline:4px;
+}
+.p-built{list-style:none;margin-top:2px}
+.p-built li{
+  position:relative;padding-left:19px;font-size:14.4px;line-height:1.7;
+  color:#D6D1E4;margin-bottom:6px;
+}
+.p-built li::before{
+  content:"";position:absolute;left:0;top:10px;width:7px;height:7px;border-radius:2px;
+  background:var(--tint,var(--apricot));opacity:.8;
+}
+.frame .ph{font-family:var(--mono);font-size:9.5px;color:var(--dim);text-align:center;padding:16px;line-height:1.9}
+@media(max-width:860px){
+  .project{grid-template-columns:1fr;gap:26px}
+  .project:nth-child(even) .p-media{order:0}
+  .p-media{margin-inline:calc(var(--pad) * -1);padding-inline:var(--pad)}
+}
+
+/* ============================================================
+   CERTIFICATES
+   ============================================================ */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:18px;margin-top:38px}
+.cert{
+  background:var(--glass);border:1px solid var(--line);border-radius:16px;overflow:hidden;
   transition:.25s var(--ease);
 }
-.social a:hover{color:var(--text);border-color:rgba(255,255,255,.35);background:var(--glass);transform:translateY(-2px)}
+.cert:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.3);box-shadow:0 18px 40px -20px rgba(0,0,0,.8)}
+.cert .thumb{aspect-ratio:4/3;background:#0D0B16;display:grid;place-items:center;overflow:hidden;border-bottom:1px solid var(--line)}
+.cert .thumb img{width:100%;height:100%;object-fit:cover;object-position:center top;cursor:zoom-in}
+.cert .thumb.empty{font-family:var(--mono);font-size:10px;color:var(--dim);text-align:center;padding:14px;line-height:1.8}
+.cert .meta{padding:14px 15px}
+.cert .meta strong{display:block;font-size:14px;font-weight:600;line-height:1.35}
+.cert .meta span{display:block;font-family:var(--mono);font-size:10px;color:var(--dim);margin-top:6px;letter-spacing:.05em}
 
 /* ============================================================
-   DEVICE
+   SKILLS + ABOUT
    ============================================================ */
-.device{
-  position:relative;flex-shrink:0;
-  width:min(390px,92vw);
-  height:min(830px,86dvh);
-  border-radius:52px;
-  padding:11px;
-  background:linear-gradient(160deg,#3A3550,#141220 45%,#2C2840);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,.09),
-    0 48px 90px -20px rgba(0,0,0,.85),
-    0 0 130px -40px rgba(120,80,220,.5);
-}
-.screen{
-  position:relative;width:100%;height:100%;
-  border-radius:42px;overflow:hidden;
-  background:linear-gradient(178deg,var(--wall-top),var(--wall-mid) 52%,var(--wall-btm));
-  isolation:isolate;
-}
-.screen::after{ /* ambient wallpaper glow */
-  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
-  background:
-    radial-gradient(320px 240px at 78% 8%, rgba(255,179,103,.20), transparent 70%),
-    radial-gradient(300px 300px at 8% 88%, rgba(111,227,192,.14), transparent 70%);
-}
-
-/* --- status bar ------------------------------------------- */
-.statusbar{
-  position:absolute;top:0;left:0;right:0;height:46px;z-index:30;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 26px;font-size:13px;font-weight:600;letter-spacing:.01em;
-  pointer-events:none;
-}
-.statusbar .icons{display:flex;align-items:center;gap:6px;opacity:.9}
-.notch{
-  position:absolute;top:9px;left:50%;transform:translateX(-50%);
-  width:96px;height:27px;border-radius:999px;background:#07060C;z-index:31;
-}
-
-/* --- home screen ------------------------------------------ */
-.home{
-  position:absolute;inset:0;z-index:10;
-  display:flex;flex-direction:column;
-  padding:56px 20px 0;
-  overflow-y:auto;overflow-x:hidden;
-  scrollbar-width:none;
-}
-.home::-webkit-scrollbar{display:none}
-
-.widget{
-  display:flex;gap:14px;align-items:center;
-  background:var(--glass);border:1px solid var(--line);
-  backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
-  border-radius:24px;padding:14px;margin-bottom:26px;
-}
-.avatar{
-  width:56px;height:56px;border-radius:18px;flex-shrink:0;overflow:hidden;
-  background:linear-gradient(145deg,var(--apricot),var(--rose));
-  display:grid;place-items:center;
-  font-family:var(--display);font-weight:800;font-size:22px;color:#1A1024;
-}
-.avatar img{width:100%;height:100%;object-fit:cover}
-.widget .who{flex:1;min-width:0}
-.widget .who strong{
-  display:block;font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:-.01em;
-}
-.widget .who span{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
-.badge{
-  display:inline-flex;align-items:center;gap:5px;margin-top:7px;
-  font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
-  color:var(--mint);background:rgba(111,227,192,.11);
-  border:1px solid rgba(111,227,192,.28);padding:3px 8px;border-radius:999px;
-}
-.badge i{width:5px;height:5px;border-radius:50%;background:var(--mint)}
-.widget .cv{
-  align-self:stretch;display:grid;place-items:center;padding:0 14px;
-  border-left:1px solid var(--line);
-  font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--muted);
-  text-decoration:none;text-align:center;line-height:1.5;transition:color .2s
-}
-.widget .cv:hover{color:var(--apricot)}
-
-.page-label{
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--dim);margin:0 4px 14px;
-}
-
-/* --- app grid --------------------------------------------- */
-.grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:20px 8px;padding-bottom:20px;
-}
-.app{
-  display:flex;flex-direction:column;align-items:center;gap:7px;
-  transition:transform .22s var(--ease);
-}
-.app:active{transform:scale(.88)}
-.icon{
-  width:60px;height:60px;border-radius:19px;
-  display:grid;place-items:center;overflow:hidden;
-  font-family:var(--display);font-weight:800;font-size:25px;color:#120C1C;
-  box-shadow:0 8px 20px -6px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.35);
-  position:relative;
-}
-.icon img{width:100%;height:100%;object-fit:cover}
-.icon::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(160deg,rgba(255,255,255,.34),transparent 55%);
-}
-.app .label{
-  font-size:10.5px;color:rgba(255,255,255,.88);text-align:center;line-height:1.25;
-  text-shadow:0 1px 3px rgba(0,0,0,.6);max-width:74px;
-}
-
-/* --- dock -------------------------------------------------- */
-.dock{
-  margin-top:auto;position:sticky;bottom:0;
-  background:var(--glass-2);border:1px solid var(--line);
-  backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);
-  border-radius:30px;padding:13px 10px;
-  display:grid;grid-template-columns:repeat(4,1fr);gap:6px;
-  margin-bottom:26px;
-}
-.dock .app .label{font-size:9.5px}
-.dock .icon{width:52px;height:52px;border-radius:16px;font-size:20px}
-.home-bar{
-  position:absolute;bottom:8px;left:50%;transform:translateX(-50%);
-  width:128px;height:5px;border-radius:99px;background:rgba(255,255,255,.4);z-index:40;
-  pointer-events:none;
-}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,72px);align-items:start}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.skill-row{padding:18px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:118px 1fr;gap:18px}
+.skill-row:first-of-type{border-top:1px solid var(--line)}
+.skill-row h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--apricot);padding-top:3px}
+.skill-row p{font-size:14.5px;line-height:1.7;color:#D6D1E4}
+@media(max-width:520px){.skill-row{grid-template-columns:1fr;gap:8px}}
+.about p{font-size:16px;line-height:1.78;color:#D6D1E4}
+.about p+p{margin-top:16px}
 
 /* ============================================================
-   APP VIEW (the sheet that opens)
+   CONTACT
    ============================================================ */
-.view{
-  position:absolute;inset:0;z-index:50;
-  background:var(--wall-btm);
-  overflow-y:auto;overflow-x:hidden;
-  scrollbar-width:none;
-  opacity:0;pointer-events:none;
-  transform:scale(.28);
-  border-radius:22px;
-  transform-origin:var(--ox,50%) var(--oy,50%);
-  transition:transform .46s var(--ease), opacity .28s ease, border-radius .46s var(--ease);
+.contact{text-align:center;border-top:1px solid var(--line)}
+.contact h2{font-family:var(--display);font-size:clamp(34px,5.4vw,64px);font-weight:800;letter-spacing:-.04em;line-height:1;margin-bottom:18px}
+.contact p{color:var(--muted);font-size:17px;max-width:46ch;margin:0 auto 34px;line-height:1.65}
+.mailto{
+  display:inline-block;font-family:var(--display);font-weight:600;
+  font-size:clamp(19px,2.6vw,30px);letter-spacing:-.02em;
+  border-bottom:2px solid rgba(255,179,103,.45);padding-bottom:5px;transition:.25s var(--ease);
 }
-.view::-webkit-scrollbar{display:none}
-.view.open{opacity:1;pointer-events:auto;transform:scale(1);border-radius:0}
-
-.view-head{
-  position:relative;padding:64px 22px 26px;
-  background:linear-gradient(165deg,var(--tint,#333) 0%, transparent 100%);
-  border-bottom:1px solid var(--line);
+.mailto:hover{color:var(--apricot);border-color:var(--apricot)}
+.socials{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+.socials a{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;padding:11px 19px;
+  border:1px solid var(--line);border-radius:999px;color:var(--muted);transition:.24s var(--ease);
 }
-.back{
-  position:absolute;top:52px;left:14px;z-index:5;
-  width:36px;height:36px;border-radius:50%;
-  background:rgba(0,0,0,.35);backdrop-filter:blur(10px);
-  display:grid;place-items:center;
-}
-.view-head .icon{margin-bottom:16px}
-.view-head h2{
-  font-family:var(--display);font-size:29px;font-weight:800;letter-spacing:-.03em;line-height:1.05;
-}
-.view-head .tagline{color:var(--muted);font-size:14.5px;margin-top:8px;line-height:1.55}
-
-.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-.chip{
-  font-family:var(--mono);font-size:10px;letter-spacing:.05em;
-  padding:5px 10px;border-radius:8px;
-  background:rgba(255,255,255,.08);border:1px solid var(--line);color:var(--muted);
-}
-
-.view-body{padding:26px 22px 60px}
-.block{margin-bottom:30px}
-.block h3{
-  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--dim);margin-bottom:10px;
-}
-.block p{font-size:14.5px;line-height:1.72;color:#D9D4E6}
-.block p + p{margin-top:12px}
-.block strong{color:var(--text);font-weight:600}
-
-.highlight{
-  border-left:2px solid var(--tint,var(--apricot));
-  padding:2px 0 2px 16px;
-}
-
-/* --- screenshot gallery ----------------------------------- */
-.gallery{
-  display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
-  margin:0 -22px;padding:4px 22px 14px;scrollbar-width:none;
-}
-.gallery::-webkit-scrollbar{display:none}
-.shot{
-  flex:0 0 152px;height:330px;border-radius:20px;overflow:hidden;
-  scroll-snap-align:center;border:1px solid var(--line);
-  background:#100E1A;cursor:zoom-in;
-  transition:transform .25s var(--ease);
-}
-.shot:hover{transform:translateY(-4px)}
-.shot img{width:100%;height:100%;object-fit:cover;display:block}
-.shot.empty{
-  border:1px dashed rgba(255,255,255,.22);cursor:default;
-  display:grid;place-items:center;text-align:center;padding:18px;
-}
-.shot.empty span{font-family:var(--mono);font-size:10px;color:var(--dim);line-height:1.8}
-
-.links{display:flex;flex-direction:column;gap:8px}
-.linkrow{
-  display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:14px 16px;border-radius:14px;
-  background:var(--glass);border:1px solid var(--line);
-  text-decoration:none;font-size:13.5px;font-weight:500;
-  transition:.22s var(--ease);
-}
-.linkrow:hover{background:var(--glass-2);border-color:rgba(255,255,255,.3);transform:translateX(3px)}
-.linkrow span:last-child{font-family:var(--mono);font-size:11px;color:var(--dim)}
-
-/* --- certificates ----------------------------------------- */
-.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.cert{
-  background:var(--glass);border:1px solid var(--line);border-radius:16px;
-  overflow:hidden;text-align:left;transition:.22s var(--ease);
-}
-.cert:hover{border-color:rgba(255,255,255,.3);transform:translateY(-3px)}
-.cert .thumb{
-  height:104px;background:#100E1A;display:grid;place-items:center;
-  border-bottom:1px solid var(--line);
-}
-.cert .thumb img{width:100%;height:100%;object-fit:cover;object-position:center top}
-.cert .thumb.empty{font-family:var(--mono);font-size:9px;color:var(--dim);text-align:center;padding:8px}
-.cert .meta{padding:11px 12px}
-.cert .meta strong{display:block;font-size:12.5px;font-weight:600;line-height:1.35}
-.cert .meta span{display:block;font-family:var(--mono);font-size:9.5px;color:var(--dim);margin-top:5px;letter-spacing:.05em}
-
-/* --- skills ----------------------------------------------- */
-.skillset{margin-bottom:22px}
-.skillset h4{
-  font-size:12px;font-weight:600;color:var(--apricot);margin-bottom:9px;
-  font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;
+.socials a:hover{color:var(--text);border-color:rgba(255,255,255,.35);background:var(--glass);transform:translateY(-2px)}
+footer{
+  border-top:1px solid var(--line);padding-block:26px;
+  font-family:var(--mono);font-size:11px;color:var(--dim);
+  display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
 }
 
 /* ============================================================
-   LIGHTBOX
+   LIGHTBOX + MOTION
    ============================================================ */
 .lightbox{
-  position:fixed;inset:0;z-index:200;
-  background:rgba(6,4,12,.93);backdrop-filter:blur(14px);
-  display:grid;place-items:center;padding:28px;
+  position:fixed;inset:0;z-index:300;background:rgba(6,4,12,.94);
+  backdrop-filter:blur(14px);display:grid;place-items:center;padding:26px;
   opacity:0;pointer-events:none;transition:opacity .3s ease;
 }
 .lightbox.open{opacity:1;pointer-events:auto}
-.lightbox img{max-width:100%;max-height:88dvh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
-.lightbox .close{
-  position:absolute;top:22px;right:22px;width:42px;height:42px;border-radius:50%;
-  background:var(--glass-2);border:1px solid var(--line);display:grid;place-items:center;
-}
+.lightbox img{max-width:100%;max-height:88dvh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.lightbox .x{position:absolute;top:20px;right:20px;width:42px;height:42px;border-radius:50%;
+  background:var(--glass-2);border:1px solid var(--line);display:grid;place-items:center}
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width:900px){
-  .stage{flex-direction:column;gap:34px;padding:34px 18px}
-  .intro{max-width:100%;text-align:center}
-  .eyebrow{justify-content:center}
-  .intro p{margin:0 auto}
-  .intro .hint{display:none}
-  .social{justify-content:center}
-  .device{
-    width:min(390px,100%);height:min(830px,80dvh);
-    padding:9px;border-radius:44px;
-  }
-  .screen{border-radius:36px}
-}
-@media (max-width:420px){
-  .device{border-radius:38px;padding:0;background:none;box-shadow:none;height:78dvh}
-  .screen{border-radius:26px;box-shadow:0 20px 50px rgba(0,0,0,.6)}
-  .notch{display:none}
-  .statusbar{height:36px}
-  .home{padding-top:44px}
-}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){
-  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
-  .view{transform:none}
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+  .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
 <body>
 
-<main class="stage">
-
-  <!-- ═══════════ LEFT COLUMN ═══════════ -->
-  <section class="intro">
-    <p class="eyebrow" id="introEyebrow">Open to work</p>
-    <h1>I build<br>things that<em>live in your pocket.</em></h1>
-    <p id="introBio">Mobile developer. Seven shipped apps, each taken from an empty project folder to something people actually open on a Tuesday morning.</p>
-    <p class="hint">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M9 11V6a2 2 0 1 1 4 0v5"/><path d="M13 11V8a2 2 0 1 1 4 0v3"/><path d="M17 11v-1a2 2 0 1 1 4 0v6a6 6 0 0 1-6 6h-2a7 7 0 0 1-7-7v-3a2 2 0 1 1 4 0"/></svg>
-      Tap any app to open it
-    </p>
-    <nav class="social" id="socialLinks"></nav>
-  </section>
-
-  <!-- ═══════════ PHONE ═══════════ -->
-  <section class="device">
-    <div class="notch"></div>
-    <div class="screen">
-
-      <div class="statusbar">
-        <span id="clock">9:41</span>
-        <span class="icons">
-          <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor"><rect x="0" y="7.5" width="3" height="3.5" rx="1"/><rect x="4.5" y="5" width="3" height="6" rx="1"/><rect x="9" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="0" width="3" height="11" rx="1"/></svg>
-          <svg width="16" height="12" viewBox="0 0 16 12" fill="currentColor"><path d="M8 11.2 5.6 8.6a3.4 3.4 0 0 1 4.8 0L8 11.2Zm0-5.4a6.4 6.4 0 0 0-4.5 1.9L1.9 6.1a8.7 8.7 0 0 1 12.2 0l-1.6 1.6A6.4 6.4 0 0 0 8 5.8Z"/></svg>
-          <svg width="25" height="12" viewBox="0 0 25 12" fill="none"><rect x=".7" y=".7" width="20" height="10.6" rx="3.2" stroke="currentColor" stroke-opacity=".45"/><rect x="2.4" y="2.4" width="14" height="7.2" rx="1.9" fill="currentColor"/><path d="M22.4 4.2v3.6a2 2 0 0 0 0-3.6Z" fill="currentColor" fill-opacity=".45"/></svg>
-        </span>
-      </div>
-
-      <!-- HOME SCREEN -->
-      <div class="home" id="home">
-        <div class="widget">
-          <div class="avatar" id="avatar">YN</div>
-          <div class="who">
-            <strong id="wName">Your Name</strong>
-            <span id="wRole">Mobile Developer</span>
-            <span class="badge"><i></i> <span id="wStatus">Available</span></span>
-          </div>
-          <a class="cv" id="cvLink" href="#" download>CV<br>↓</a>
-        </div>
-
-        <p class="page-label">Projects</p>
-        <div class="grid" id="appGrid"></div>
-
-        <nav class="dock" id="dock"></nav>
-      </div>
-
-      <!-- APP VIEW -->
-      <article class="view" id="view" role="dialog" aria-modal="true" aria-label="Project detail"></article>
-
-      <div class="home-bar"></div>
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">Muhammad<i>.</i></a>
+    <div class="navlinks" id="navlinks">
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#certificates">Certificates</a>
+      <a href="#skills">Skills</a>
+      <a href="#about">About</a>
     </div>
-  </section>
-</main>
+    <a class="cta" href="#contact">Get in touch</a>
+  </div>
+</nav>
+
+<div id="top"></div>
+
+<header class="wrap hero">
+  <div>
+    <div class="identity">
+      <div class="portrait" id="portrait"></div>
+      <div class="who">
+        <strong id="hName"></strong>
+        <p class="role-line" id="hRole"></p>
+      </div>
+    </div>
+    <span class="status"><i></i><span id="hStatus">Open to work</span></span>
+    <h1>I build iOS apps that<em>hold up under real use.</em></h1>
+    <p class="lede" id="hLede"></p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#work">See the work
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+      <a class="btn btn-ghost" id="hCv" href="#" download>Download CV</a>
+    </div>
+    <div class="stats" id="hStats"></div>
+  </div>
+
+  <div class="hero-phone">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-bar"><span id="clock">9:41</span><span>▮▮▮</span></div>
+        <p class="phone-hint">Tap an app to jump to it</p>
+        <div class="icons" id="heroIcons"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="experience">
+  <div class="wrap">
+    <p class="eyebrow reveal">Experience</p>
+    <h2 class="sec reveal">Where I've worked</h2>
+    <p class="sec-note reveal">Four years building iOS for public-sector systems, plus product and team-lead work alongside it.</p>
+    <div class="timeline" id="timeline"></div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap">
+    <p class="eyebrow reveal">Selected work</p>
+    <h2 class="sec reveal">Ten apps, shipped.</h2>
+    <p class="sec-note reveal">Production iOS work — the architecture, the networking, and the problems that only surface once real people are using it daily.</p>
+    <div id="projects"></div>
+  </div>
+</section>
+
+<section id="certificates">
+  <div class="wrap">
+    <p class="eyebrow reveal">Recognition</p>
+    <h2 class="sec reveal">Awards &amp; certificates</h2>
+    <p class="sec-note reveal">Click any one to read it full size.</p>
+    <div class="cert-grid" id="certs"></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap split">
+    <div>
+      <p class="eyebrow reveal">Toolkit</p>
+      <h2 class="sec reveal">What I build with</h2>
+      <div id="skillList" class="reveal"></div>
+    </div>
+    <div id="about" class="about reveal">
+      <p class="eyebrow">About</p>
+      <h2 class="sec">How I work</h2>
+      <div id="aboutText"></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2 class="reveal">Let's build something.</h2>
+    <p class="reveal">Open to senior iOS roles and contract work — especially anything with real-time or offline-first requirements.</p>
+    <a class="mailto reveal" id="mail" href="#"></a>
+    <div class="socials reveal" id="socials"></div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span id="footName"></span>
+  <span>Built from scratch · <span id="year"></span></span>
+</footer>
 
 <div class="lightbox" id="lightbox">
-  <button class="close" aria-label="Close image">
+  <button class="x" aria-label="Close">
     <svg width="19" height="19" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
   </button>
   <img id="lightboxImg" alt="">
@@ -450,148 +491,249 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 <script>
 /* ══════════════════════════════════════════════════════════════
    ▓▓▓  EDIT EVERYTHING BELOW THIS LINE — NOTHING ELSE  ▓▓▓
+   All images live in the images/ folder next to this file.
    ══════════════════════════════════════════════════════════════ */
 
 const PROFILE = {
-  name:   "Mohammad Ahmed",
-  role:   "Mobile Developer",
+  name:   "Muhammad Ahmed",
+  role:   "Senior iOS Developer",
   status: "Open to work",
-  monogram: "MA",                  // shows if photo is missing
-  photo:  "",                      // e.g. "images/me.jpg"
-  resume: "images/resume.pdf",        // put your PDF in the images folder
+  photo:  "images/ahmed.jpg",   // extension is auto-detected — jpg, jpeg, png or webp all work
+  resume: "images/resume.pdf",
   email:  "you@example.com",
+  lede:   "Senior iOS developer at the Punjab Information Technology Board, building government-scale apps in Swift across UIKit and SwiftUI — HR systems used daily by Punjab Police, real-time auction platforms, and public-facing citizen services.",
+  stats: [
+    { value: "10", label: "Apps shipped" },
+    { value: "4+", label: "Years in iOS" },
+    { value: "3",  label: "Organizations" }
+  ],
   socials: [
     { label: "GitHub",   url: "https://github.com/yourhandle" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/yourhandle" },
+    { label: "LinkedIn", url: "https://www.linkedin.com/in/muhammad-ahmed-142b35211/" },
     { label: "Email",    url: "mailto:you@example.com" }
   ],
   about: [
-    "I'm a mobile developer based in Gujranwala. I started building apps because I kept running into small daily frictions that felt fixable, and I've shipped seven since.",
-    "I work end to end: design the flow, build the UI, wire the backend, handle the edge cases nobody notices until they break. I care most about apps that stay fast on a three-year-old mid-range phone."
+    "I'm a senior iOS developer at the Punjab Information Technology Board, where I've spent the last few years building systems that thousands of government employees depend on every day. Most of my work sits in Swift across UIKit and SwiftUI, and the apps I'm proudest of are the ones where the difficulty isn't the interface — it's keeping a live connection alive, handling data that arrives out of order, and staying usable when the network doesn't cooperate.",
+    "Architecture is where I'm most deliberate. I build on MVVM with coordinators handling navigation, protocol-based dependency injection so view models are testable without a network, and a hard boundary between the networking layer and everything above it. On larger products I've set the project structure from the start and led other iOS developers working inside it, which means the structure has to be something a new developer can navigate in a day.",
+    "Real-time is the area I know best. I built the eAuction platform's live bidding on WebSockets, where every participant has to see the current highest bid the instant it lands, and I've worked through the same problems in chat: reconnection and backoff, offline message queues, optimistic UI that reconciles against server acknowledgement, and push notification handoff when the app goes to background.",
+    "Alongside the building, I handle the parts that keep an app healthy after release — Instruments profiling when scrolling stutters, crash triage, App Store submissions and TestFlight builds — and I review pull requests and mentor junior developers on the team."
   ],
   skills: [
-    { group: "Mobile",   items: "Flutter · Dart · Kotlin · Jetpack Compose · React Native" },
-    { group: "Backend",  items: "Firebase · Node.js · Express · REST · Supabase" },
-    { group: "Data",     items: "SQLite · Room · Firestore · Hive" },
-    { group: "Tooling",  items: "Git · Figma · Play Console · CI basics" }
+    { group: "Languages", items: "Swift · Objective-C (maintenance) · Swift Concurrency (async/await, actors)" },
+    { group: "UI",        items: "UIKit programmatic & Storyboards · SwiftUI · Auto Layout · Combine · Core Animation · custom transitions" },
+    { group: "Architecture", items: "MVVM · MVVM-C with coordinators · Clean Architecture · protocol-oriented design · dependency injection · modularisation with SPM" },
+    { group: "Realtime",  items: "WebSockets (URLSessionWebSocketTask, Starscream, Socket.IO) · live bidding & chat · reconnection and backoff · offline queues · APNs push" },
+    { group: "Networking", items: "URLSession · Alamofire · REST · Codable · JWT & OAuth flows · certificate pinning" },
+    { group: "Data",      items: "Core Data · SwiftData · Realm · Keychain · file-backed caching" },
+    { group: "Quality",   items: "XCTest · XCUITest · Instruments profiling · memory-leak hunting · code review" },
+    { group: "Leadership", items: "Leading iOS teams · project structure and standards · mentoring juniors · release management" },
+    { group: "Tooling",   items: "Xcode · Swift Package Manager · CocoaPods · Git · Fastlane · TestFlight · App Store Connect · Firebase" }
   ]
 };
 
-/* ── YOUR APPS ────────────────────────────────────────────────
-   color     : the icon colour + the wash behind the header
-   monogram  : letter shown if no icon image
-   icon      : "images/split-icon.png"  (optional)
-   screenshots: ["images/split-1.png","images/split-2.png"]  (leave [] for now)
-   highlight : the paragraph recruiters actually read. Be specific.
-   ──────────────────────────────────────────────────────────── */
+/* ── EXPERIENCE ───────────────────────────────────────────────── */
+const EXPERIENCE = [
+  {
+    company: "Punjab Information Technology Board (PITB)",
+    url: "https://www.linkedin.com/company/78357897/",
+    meta: "Full-time · 3 yrs 7 mos · Lahore · On-site",
+    roles: [
+      {
+        title: "Senior iOS App Developer",
+        dates: "Jul 2026 – Present",
+        bullets: [
+          "Lead the development and management of HRMIS, a comprehensive Human Resource Management Information System for Punjab Police covering personnel management and administrative workflows.",
+          "Built the eAuction iOS application from scratch — a real-time platform for vehicle number plate bidding, with live bidding powered by WebSockets.",
+          "Built NHMP from scratch, a complete HR and operational management system for the National Highways & Motorway Police, with a modernised design and expanded feature set over the previous HRMIS solution.",
+          "Designed and developed the PERA iOS application with an entirely new UI/UX, improving usability and bringing it in line with current design standards.",
+          "Contributed to PULSE, a unified internal productivity platform, integrating the Chat, Task Management, Daak (documents), and Meetings modules.",
+          "Developed the Punjab Police Public application, a citizen-facing app for police services and public interaction.",
+          "Delivered the iOS build of the Crime Reporting & Management app (Flutter), handling build configuration and native integration.",
+          "Received the Emerging Talent Award for contribution to digital transformation initiatives, and an appreciation letter and reward for delivering a stable HRMIS iOS app."
+        ]
+      },
+      {
+        title: "iOS App Developer",          /* ← confirm your earlier title */
+        dates: "Jan 2023 – Jul 2026",        /* ← confirm these dates */
+        bullets: [
+          "Add 2–3 lines here about what you did before the promotion."
+        ]
+      }
+    ]
+  },
+  {
+    company: "Bizionic Technologies",
+    url: "",
+    meta: "Part-time · Remote",
+    roles: [
+      {
+        title: "Senior iOS Developer / iOS Team Lead",
+        dates: "Add dates",
+        bullets: [
+          "Led a team of iOS developers, setting the project structure and development standards the team built against.",
+          "Worked on LetWizard and MedEasy — architecture, new module development, and problem solving across both products.",
+          "Focused on breaking down complex requirements into deliverable modules and unblocking the team on technical problems."
+        ]
+      }
+    ]
+  },
+  {
+    company: "ibex",
+    url: "",
+    meta: "Full-time · 2022 – 2023",
+    roles: [
+      {
+        title: "iOS Developer",
+        dates: "2022 – 2023",
+        bullets: [
+          "Worked on the Payment & Funds Transfer module of the Al Meezan Investment application, a digital investment platform for managing investments.",
+          "Built payment transfer workflows and transaction handling, and integrated and managed the payment-related APIs.",
+          "Implemented transaction validation and error-handling scenarios to make secure payment flows predictable under failure.",
+          "Collaborated with the team to keep consistency, reliability, and security aligned across the module, and contributed to improvements in the application's design."
+        ]
+      }
+    ]
+  }
+];
+
+/* ── YOUR APPS ──────────────────────────────────────────────────
+   banner: "images/name-banner.png"  → a wide image shown across the
+   full width of the card. When a banner is set, leave screenshots empty.
+
+   These are your real apps. Where a field is left empty ("") the
+   site simply skips it — so fill in the blanks as you have time
+   rather than leaving anything invented on the page.
+   ─────────────────────────────────────────────────────────────── */
 const APPS = [
   {
-    name: "Splitwise Lite",
-    monogram: "S",
-    color: "#FFB367",
-    icon: "",
-    tagline: "Scan a restaurant receipt, split it by who ate what.",
-    problem: "Splitting a group bill always ended in someone doing arithmetic on a napkin. Existing apps made you type every line item by hand, which took longer than just paying the whole thing yourself.",
-    role: "Solo — design, Flutter app, OCR pipeline, and the Firebase backend.",
-    highlight: "Receipt OCR returns line items in an unpredictable order with inconsistent spacing, so a naive parser mismatched prices to items about a third of the time. I ended up grouping detected text by vertical position with a tolerance band instead of parsing line by line, which pushed accuracy past 90% on crumpled receipts. Everything also had to work offline, so the split state lives in a local queue and reconciles with Firestore when the connection comes back.",
-    stack: ["Flutter", "Dart", "Firebase", "ML Kit OCR", "Hive"],
+    name: "HRMIS", company: "PITB · Punjab Police",
+    monogram: "HR", color: "#FFB367", icon: "",
+    tagline: "A comprehensive Human Resource Management Information System for Punjab Police.",
+    problem: "HR operations, personnel records, and administrative workflows across a force this size were spread across manual processes that didn't scale.",
+    role: "Lead iOS developer — I lead development and ongoing management of the iOS application.",
+    highlight: "",   /* ← the technical challenge you're proudest of solving here */
+    stack: ["Swift", "UIKit", "MVVM", "REST"],
     screenshots: [],
-    links: [
-      { label: "Source code", url: "#", note: "GitHub" },
-      { label: "Download APK", url: "#", note: "v1.4" }
-    ]
+    links: []
   },
   {
-    name: "Nimbus",
-    monogram: "N",
-    color: "#6FE3C0",
-    icon: "",
-    tagline: "A weather app that only tells you what changes your day.",
-    problem: "Weather apps show ten data points when you only need one answer: do I need a jacket or an umbrella. I wanted the forecast reduced to a single sentence.",
-    role: "Solo — Kotlin app, Compose UI, and the summarisation logic.",
-    highlight: "Turning raw hourly data into one useful sentence meant writing a small rules engine that weighs rain probability, temperature swing, and wind against the hours the user is actually outside. Getting the widget to refresh without draining battery took the most iteration — I moved from a periodic worker to a scheduled update tied to significant weather deltas.",
-    stack: ["Kotlin", "Jetpack Compose", "OpenWeather API", "WorkManager"],
+    name: "eAuction", company: "PITB",
+    monogram: "EA", color: "#6FE3C0", icon: "",
+    tagline: "A real-time auction platform for vehicle number plate bidding.",
+    problem: "Number plate auctions needed to move online without losing the transparency of a live room — every bidder has to see the same current price at the same moment.",
+    role: "Built from scratch — sole iOS developer.",
+    highlight: "Live bidding runs over WebSockets, so a bid placed by any participant appears to everyone else immediately rather than on a refresh. That makes the auction transparent and keeps the bidding honest.",
+    stack: ["Swift", "WebSockets", "MVVM", "Real-time"],
     screenshots: [],
-    links: [
-      { label: "Source code", url: "#", note: "GitHub" }
-    ]
+    links: []
   },
   {
-    name: "Rehearse",
-    monogram: "R",
-    color: "#FF7E9D",
-    icon: "",
-    tagline: "Spaced-repetition flashcards that don't feel like homework.",
-    problem: "Every flashcard app I tried buried the actual studying under settings, streaks and decks-of-decks. I wanted to open the app and be reviewing within one tap.",
-    role: "Solo — full build, plus the scheduling algorithm.",
-    highlight: "I implemented a modified SM-2 scheduler and quickly found the textbook version punishes people who miss a few days — the backlog balloons and they quit. I added a review-cap with intelligent overflow that spreads an overdue backlog across the next few sessions instead of dumping it in one, which kept my test users returning.",
-    stack: ["Flutter", "SQLite", "Riverpod"],
+    name: "NHMP", company: "PITB · Motorway Police",
+    monogram: "NH", color: "#FF7E9D", icon: "",
+    tagline: "HR and operational management for the National Highways & Motorway Police.",
+    problem: "The existing HRMIS solution was dated and limited in what it could handle for a force operating across the motorway network.",
+    role: "Built from scratch — sole iOS developer.",
+    highlight: "",   /* ← what made this harder than the previous system? */
+    stack: ["Swift", "UIKit", "MVVM"],
     screenshots: [],
-    links: [{ label: "Source code", url: "#", note: "GitHub" }]
+    links: []
   },
   {
-    name: "Trailhead",
-    monogram: "T",
-    color: "#8CA8FF",
-    icon: "",
-    tagline: "Offline hiking maps with live elevation tracking.",
-    problem: "Trails are exactly where you lose signal, and most map apps become useless the moment you do.",
-    role: "Solo — app, tile caching layer, GPS pipeline.",
-    highlight: "Caching map tiles for a whole region without filling the user's storage meant building a tiered cache: full detail near the plotted route, coarse tiles further out, with automatic eviction of regions untouched for 30 days. Continuous GPS logging also destroyed battery until I switched to distance-filtered updates that back off when the user stops moving.",
-    stack: ["React Native", "Mapbox", "SQLite", "Expo"],
-    screenshots: [],
-    links: [{ label: "Source code", url: "#", note: "GitHub" }]
+    name: "PULSE", company: "PITB · Punjab Police",
+    monogram: "PU", color: "#2190F6", icon: "",
+    tagline: "A unified productivity platform for internal police communication and operations — messaging, attendance, leave, tasks, documents and meetings in one app.",
+    problem: "Internal communication, task assignment, document routing, meetings, attendance and leave were spread across separate channels and paper-based processes. Officers needed a single secure app that covered all of it, usable in the field on unreliable connections.",
+    role: "Key contributor — I integrated the Chat, Task Management, Daak (documents) and Meetings modules, and worked on attendance, leave, and secure sign-in.",
+    built: [
+      "Live chat with real-time message delivery",
+      "Offline messaging — messages compose and send even without a connection",
+      "Push notifications for messages received while the app is backgrounded",
+      "Face-recognition sign-in matched against the employee record on the backend",
+      "Attendance tracking and summaries",
+      "Leave requests and approval workflow",
+      "Task management, Daak (document) routing, and Meetings"
+    ],
+    highlight: "Chat runs over WebSockets rather than polling, so a message reaches the other officer the moment it is sent instead of waiting for the next refresh. Because the app is used in the field, it had to stay useful without a connection: messages composed offline are held and delivered once the socket comes back, and push notifications carry conversations forward when the app is in the background. Sign-in was the other piece I'm most pleased with — instead of a password, the app captures the officer's face and matches it against the employee's face record held on the backend, which removes shared credentials from a security-sensitive environment while making daily access faster than typing anything.",
+    stack: ["Swift", "WebSockets", "Offline messaging", "Push notifications", "Face recognition", "MVVM"],
+    banner: "images/pulse-banner.png",   // extension auto-detected
+    screenshots: [],                     // leave empty while a banner is set
+    links: []
   },
   {
-    name: "Pantry",
-    monogram: "P",
-    color: "#C4A2FF",
-    icon: "",
-    tagline: "Tracks what's in your kitchen and what expires next.",
-    problem: "I was throwing away food I forgot I owned. The tracking had to take under five seconds per item or I'd never keep it up.",
-    role: "Solo — barcode scanning, local database, notification scheduling.",
-    highlight: "Speed of entry was the whole product, so I built barcode scanning that pre-fills the item from a product database and guesses a shelf life by category, needing one tap to confirm. Expiry notifications had to survive device reboots and aggressive battery optimisation on budget Android phones, which meant rescheduling alarms on boot and guiding users through the OEM battery settings.",
-    stack: ["Flutter", "ML Kit Barcode", "SQLite", "Local notifications"],
+    name: "PERA", company: "PITB",
+    monogram: "PE", color: "#C4A2FF", icon: "",
+    tagline: "A modern HR solution rebuilt around a new user experience.",
+    problem: "The existing experience didn't match how people actually worked, and the interface had fallen behind current design standards.",
+    role: "Designed and developed the iOS application, including an entirely new UI/UX.",
+    highlight: "",
+    stack: ["Swift", "SwiftUI", "UI/UX"],
     screenshots: [],
-    links: [{ label: "Source code", url: "#", note: "GitHub" }]
+    links: []
   },
   {
-    name: "Metro",
-    monogram: "M",
-    color: "#FFD166",
-    icon: "",
-    tagline: "Bus timings for my city, without the ads.",
-    problem: "Local transit information was scattered across PDFs and a website that didn't work on phones. I scraped it into something usable.",
-    role: "Solo — scraper, Node API, and the client app.",
-    highlight: "The source data changed format without warning, so the scraper needed to fail loudly rather than silently publishing garbage — I added schema validation that halts the pipeline and keeps serving the last known-good dataset. The app itself ships with a bundled snapshot so a first-time user with no connection still gets timings.",
-    stack: ["Flutter", "Node.js", "Express", "Cheerio", "PostgreSQL"],
+    name: "Police Public App", company: "PITB · Punjab Police",
+    monogram: "PP", color: "#FFD166", icon: "",
+    tagline: "A public-facing app for citizen–police interaction and service delivery.",
+    problem: "Citizens had no direct digital route to police services, which put every request through in-person channels.",
+    role: "Developed the iOS application.",
+    highlight: "",
+    stack: ["Swift", "UIKit", "Public services"],
     screenshots: [],
-    links: [{ label: "Source code", url: "#", note: "GitHub" }]
+    links: []
   },
   {
-    name: "Quiet",
-    monogram: "Q",
-    color: "#7FD8E8",
-    icon: "",
-    tagline: "A focus timer that locks the apps you name.",
-    problem: "Focus timers are easy to ignore. I wanted one with actual friction between me and the apps I was avoiding.",
-    role: "Solo — Kotlin app, accessibility service, usage stats integration.",
-    highlight: "Blocking apps on Android without root means working through the accessibility service and usage stats APIs, both of which are heavily restricted and behave differently across manufacturers. Most of the work was a permission onboarding flow that explains what's needed and detects OEM-specific settings screens, plus a graceful degradation path when a permission is denied.",
-    stack: ["Kotlin", "Jetpack Compose", "AccessibilityService", "DataStore"],
+    name: "Crime App", company: "PITB",
+    monogram: "CR", color: "#7FD8E8", icon: "",
+    tagline: "Crime reporting and management, delivered on iOS.",
+    problem: "Crime reporting needed to be faster and more consistent than paper-based processes allowed.",
+    role: "Delivered the iOS version of a Flutter application, including build configuration and native integration.",
+    highlight: "",   /* ← anything tricky about the native bridge or the iOS build setup? */
+    stack: ["Flutter", "iOS native integration", "Build configuration"],
     screenshots: [],
-    links: [{ label: "Source code", url: "#", note: "GitHub" }]
+    links: []
+  },
+  {
+    name: "LetWizard", company: "Bizionic Technologies",
+    monogram: "LW", color: "#F0A6C8", icon: "",
+    tagline: "Add a one-line description of what LetWizard does.",
+    problem: "",
+    role: "Led the iOS team — set the project structure and developed new modules.",
+    highlight: "",
+    stack: ["Swift", "iOS"],
+    screenshots: [],
+    links: []
+  },
+  {
+    name: "MedEasy", company: "Bizionic Technologies",
+    monogram: "ME", color: "#9BE8A0", icon: "",
+    tagline: "Add a one-line description of what MedEasy does.",
+    problem: "",
+    role: "Led the iOS team — set the project structure and developed new modules.",
+    highlight: "",
+    stack: ["Swift", "iOS"],
+    screenshots: [],
+    links: []
+  },
+  {
+    name: "Al Meezan Investment", company: "ibex",
+    monogram: "AM", color: "#8ED0E0", icon: "",
+    tagline: "A digital investment platform giving users a convenient, secure way to manage their investments.",
+    problem: "Moving money is the point at which an investment app either earns trust or loses it. Transfers had to be secure and predictable, and a failure had to leave the user certain about what had happened to their funds.",
+    role: "iOS developer on the payment and funds transfer module, working within the wider development team. I also contributed to improving the application's design.",
+    highlight: "I built the payment transfer workflows and the transaction handling around them, integrating and managing the payment APIs the module depends on. Most of the care went into the paths that aren't the happy one: transaction validation and error-handling for every scenario the API could return, so a transfer that can't complete fails clearly and recoverably instead of leaving someone unsure whether their money moved. Working across a shared module also meant keeping consistency, reliability, and security aligned with the rest of the team's work — valuable grounding in fintech, where payment processing, API integration, and secure financial operations leave no room for approximate behaviour.",
+    stack: ["Swift", "Payments", "API integration", "Transaction validation", "Fintech"],
+    screenshots: [],
+    links: []
   }
 ];
 
 /* ── CERTIFICATES ───────────────────────────────────────────── */
-
 const CERTS = [
-  { name: "Emerging Talent Award",         issuer: "PITB · Software Engineering Team", date: "2026",
+  { name: "Emerging Talent Award", issuer: "PITB · Software Engineering Team", date: "2026",
     image: "images/pitb-certificate.jpeg" },
-  { name: "Meta Android Developer",        issuer: "Coursera",  date: "2025", image: "" },
-  { name: "Flutter & Dart Complete Guide", issuer: "Udemy",     date: "2024", image: "" },
-  { name: "Google UX Design",              issuer: "Coursera",  date: "2024", image: "" },
-  { name: "Firebase in a Weekend",         issuer: "Udacity",   date: "2023", image: "" }
+  { name: "Meta Android Developer",        issuer: "Coursera", date: "2025", image: "" },
+  { name: "Flutter & Dart Complete Guide", issuer: "Udemy",    date: "2024", image: "" },
+  { name: "Google UX Design",              issuer: "Coursera", date: "2024", image: "" }
 ];
 
 /* ══════════════════════════════════════════════════════════════
@@ -600,177 +742,175 @@ const CERTS = [
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+function shade(hex, amt){
+  const n = parseInt(hex.slice(1), 16);
+  return "#" + [(n>>16)&255, (n>>8)&255, n&255]
+    .map(v => Math.max(0, Math.min(255, v + amt)).toString(16).padStart(2,"0")).join("");
+}
+const sq = (item, cls) =>
+  `<div class="${cls}" style="background:linear-gradient(150deg,${item.color},${shade(item.color,-32)})">${
+    item.icon ? `<img src="${esc(item.icon)}" alt="">` : esc(item.monogram || item.name[0])}</div>`;
 
 /* ---------- profile ---------- */
-$("#wName").textContent = PROFILE.name;
-$("#wRole").textContent = PROFILE.role;
-$("#wStatus").textContent = PROFILE.status;
-$("#introEyebrow").textContent = PROFILE.status;
-$("#cvLink").href = PROFILE.resume;
 document.title = PROFILE.name + " — " + PROFILE.role;
+$("#hStatus").textContent = PROFILE.status;
+$("#hLede").textContent   = PROFILE.lede;
+$("#hRole").textContent   = PROFILE.role + " · Swift · UIKit · SwiftUI";
+$("#hName").textContent   = PROFILE.name;
 
-const av = $("#avatar");
-if (PROFILE.photo) av.innerHTML = `<img src="${esc(PROFILE.photo)}" alt="${esc(PROFILE.name)}">`;
-else av.textContent = PROFILE.monogram;
-
-$("#socialLinks").innerHTML = PROFILE.socials
-  .map(s => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)} ↗</a>`).join("");
+/* portrait — tries common extensions, falls back to initials */
+(function portrait(){
+  const box = $("#portrait");
+  const initials = PROFILE.name.split(/\s+/).map(w => w[0]).slice(0,2).join("").toUpperCase();
+  if (!PROFILE.photo) { box.textContent = initials; return; }
+  const base = PROFILE.photo.replace(/\.[^./]+$/, "");
+  const exts = ["jpg","jpeg","png","webp","JPG","JPEG","PNG"];
+  let i = 0;
+  const img = document.createElement("img");
+  img.alt = PROFILE.name;
+  img.onerror = () => {
+    i++;
+    if (i < exts.length) img.src = base + "." + exts[i];
+    else { img.remove(); box.textContent = initials; }
+  };
+  img.src = base + "." + exts[0];
+  box.appendChild(img);
+})();
+$("#hCv").href            = PROFILE.resume;
+$("#mail").textContent    = PROFILE.email;
+$("#mail").href           = "mailto:" + PROFILE.email;
+$("#footName").textContent= PROFILE.name;
+$("#year").textContent    = new Date().getFullYear();
+$("#hStats").innerHTML = PROFILE.stats.map(s =>
+  `<div class="stat"><b>${esc(s.value)}</b><span>${esc(s.label)}</span></div>`).join("");
+$("#socials").innerHTML = PROFILE.socials.map(s =>
+  `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.label)} ↗</a>`).join("");
+$("#aboutText").innerHTML = PROFILE.about.map(p => `<p>${esc(p)}</p>`).join("");
+$("#skillList").innerHTML = PROFILE.skills.map(s =>
+  `<div class="skill-row"><h4>${esc(s.group)}</h4><p>${esc(s.items)}</p></div>`).join("");
 
 /* ---------- clock ---------- */
 const tick = () => {
-  const d = new Date();
-  let h = d.getHours() % 12 || 12;
-  $("#clock").textContent = h + ":" + String(d.getMinutes()).padStart(2, "0");
+  const d = new Date(), h = d.getHours() % 12 || 12;
+  $("#clock").textContent = h + ":" + String(d.getMinutes()).padStart(2,"0");
 };
 tick(); setInterval(tick, 20000);
 
-/* ---------- icon markup ---------- */
-function iconHTML(item, big) {
-  const inner = item.icon
-    ? `<img src="${esc(item.icon)}" alt="">`
-    : esc(item.monogram || item.name[0]);
-  return `<div class="icon" style="background:linear-gradient(150deg,${item.color},${shade(item.color,-32)})">${inner}</div>`;
+/* ---------- hero phone jumps to a project ---------- */
+$("#heroIcons").innerHTML = APPS.map(a =>
+  `<a class="ic" href="#app-${slug(a.name)}" aria-label="Jump to ${esc(a.name)}">
+     ${sq(a,"sq")}<small>${esc(a.name)}</small></a>`).join("");
+
+/* ---------- experience ---------- */
+$("#timeline").innerHTML = EXPERIENCE.map(e => `
+  <div class="tl reveal">
+    <div class="tl-co">
+      <h3>${e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.company)}</a>` : esc(e.company)}</h3>
+      <span class="tl-meta">${esc(e.meta)}</span>
+    </div>
+    ${e.roles.map(r => `
+      <div class="tl-role">
+        <h4>${esc(r.title)}</h4>
+        <p class="dates">${esc(r.dates)}</p>
+        <ul>${r.bullets.map(b => `<li>${esc(b)}</li>`).join("")}</ul>
+      </div>`).join("")}
+  </div>`).join("");
+
+/* ---------- projects ---------- */
+const block = (label, text, cls) => text
+  ? `<div class="p-block"><h4>${label}</h4><p class="${cls || ""}">${esc(text)}</p></div>` : "";
+
+function media(a){
+  const inner = (a.screenshots && a.screenshots.length)
+    ? a.screenshots.map(s => {
+        const src = typeof s === "string" ? s : s.src;
+        const cap = typeof s === "string" ? "" : (s.caption || "");
+        return `<div class="shot-wrap">
+          <div class="frame"><div class="inner"><img src="${esc(src)}" alt="${esc(cap || a.name + " screenshot")}" loading="lazy" data-full="${esc(src)}"></div></div>
+          ${cap ? `<p class="shot-cap">${esc(cap)}</p>` : ""}
+        </div>`;
+      }).join("")
+    : [1,2,3].map(n =>
+        `<div class="frame"><div class="inner"><span class="ph">screenshot ${n}<br>↓<br>images/${slug(a.name)}-${n}.png</span></div></div>`).join("");
+  return `<div class="p-media">${inner}</div>`;
 }
-function shade(hex, amt) {
-  const n = parseInt(hex.slice(1), 16);
-  const c = [(n >> 16) & 255, (n >> 8) & 255, n & 255]
-    .map(v => Math.max(0, Math.min(255, v + amt)));
-  return "#" + c.map(v => v.toString(16).padStart(2, "0")).join("");
-}
-
-/* ---------- home grid ---------- */
-$("#appGrid").innerHTML = APPS.map((a, i) =>
-  `<button class="app" data-app="${i}" aria-label="Open ${esc(a.name)}">
-     ${iconHTML(a)}<span class="label">${esc(a.name)}</span>
-   </button>`).join("");
-
-/* ---------- dock ---------- */
-const DOCK = [
-  { key: "about",  name: "About",  monogram: "◍", color: "#B9AEE0" },
-  { key: "skills", name: "Skills", monogram: "◈", color: "#7FD8E8" },
-  { key: "certs",  name: "Awards", monogram: "✦", color: "#FFD166" },
-  { key: "contact",name: "Contact",monogram: "✉", color: "#6FE3C0" }
-];
-$("#dock").innerHTML = DOCK.map(d =>
-  `<button class="app" data-page="${d.key}" aria-label="Open ${d.name}">
-     ${iconHTML(d)}<span class="label">${d.name}</span>
-   </button>`).join("");
-
-/* ---------- gallery ---------- */
-function galleryHTML(shots, name) {
-  if (!shots || !shots.length) {
-    return `<div class="gallery">${[1,2,3].map(n =>
-      `<div class="shot empty"><span>screenshot ${n}<br>↓<br>images/${slug(name)}-${n}.png</span></div>`
-    ).join("")}</div>`;
-  }
-  return `<div class="gallery">${shots.map(s =>
-    `<button class="shot" data-full="${esc(s)}"><img src="${esc(s)}" alt="${esc(name)} screenshot" loading="lazy"></button>`
-  ).join("")}</div>`;
-}
-const slug = s => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-
-/* ---------- view builders ---------- */
-function appHTML(a) {
+$("#projects").innerHTML = APPS.map(a => {
+  const hasShots = a.screenshots && a.screenshots.length;
+  const cls = "project reveal" + (a.banner && !hasShots ? " banner-only" : "");
   return `
-  ${headHTML(a, a.tagline, a.stack)}
-  <div class="view-body">
-    ${galleryHTML(a.screenshots, a.name)}
-    <div class="block"><h3>The problem</h3><p>${esc(a.problem)}</p></div>
-    <div class="block"><h3>My role</h3><p>${esc(a.role)}</p></div>
-    <div class="block"><h3>The hard part</h3><p class="highlight">${esc(a.highlight)}</p></div>
-    ${a.links && a.links.length ? `<div class="block"><h3>Links</h3><div class="links">${
-      a.links.map(l => `<a class="linkrow" href="${esc(l.url)}" target="_blank" rel="noopener"><span>${esc(l.label)}</span><span>${esc(l.note || "↗")}</span></a>`).join("")
-    }</div></div>` : ""}
-  </div>`;
-}
-function headHTML(item, tagline, stack) {
-  return `
-  <header class="view-head" style="--tint:${item.color}">
-    <button class="back" data-close aria-label="Back to home screen">
-      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-    </button>
-    ${iconHTML(item)}
-    <h2>${esc(item.name)}</h2>
-    ${tagline ? `<p class="tagline">${esc(tagline)}</p>` : ""}
-    ${stack ? `<div class="chips">${stack.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div>` : ""}
-  </header>`;
-}
-const PAGES = {
-  about: () => headHTML({name:"About", monogram:"◍", color:"#B9AEE0"}, PROFILE.role) +
-    `<div class="view-body"><div class="block">${PROFILE.about.map(p=>`<p>${esc(p)}</p>`).join("")}</div>
-     <div class="block"><h3>Currently</h3><p class="highlight">${esc(PROFILE.status)}. The fastest way to reach me is email.</p></div></div>`,
+  <article class="${cls}" id="app-${slug(a.name)}" style="--tint:${a.color}">
+    ${a.banner ? `<div class="p-banner"><img class="zoom auto-ext" data-base="${esc(a.banner)}" alt="${esc(a.name)} overview"></div>` : ""}
+    <div class="p-copy">
+      <div class="p-head">${sq(a,"sq")}<h3>${esc(a.name)}</h3></div>
+      ${a.company ? `<p class="p-co">${esc(a.company)}</p>` : ""}
+      ${a.tagline ? `<p class="p-tag">${esc(a.tagline)}</p>` : ""}
+      ${block("The problem", a.problem)}
+      ${block("My role", a.role)}
+      ${a.built && a.built.length ? `<div class="p-block"><h4>What I built</h4><ul class="p-built">${
+        a.built.map(b => `<li>${esc(b)}</li>`).join("")}</ul></div>` : ""}
+      ${block("The hard part", a.highlight, "p-hard")}
+      ${a.stack && a.stack.length ? `<div class="chips">${a.stack.map(s => `<span class="chip">${esc(s)}</span>`).join("")}</div>` : ""}
+      ${a.links && a.links.length ? `<div class="p-links">${a.links.map(l =>
+        `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`).join("")}</div>` : ""}
+    </div>
+    ${hasShots ? media(a) : ""}
+  </article>`;
+}).join("");
 
-  skills: () => headHTML({name:"Skills", monogram:"◈", color:"#7FD8E8"}, "What I reach for") +
-    `<div class="view-body">${PROFILE.skills.map(s =>
-      `<div class="skillset"><h4>${esc(s.group)}</h4><p style="font-size:14px;line-height:1.7;color:#D9D4E6">${esc(s.items)}</p></div>`).join("")}</div>`,
+/* images whose extension we don't know yet — try the common ones */
+document.querySelectorAll("img.auto-ext").forEach(img => {
+  const base = img.dataset.base.replace(/\.[^./]+$/, "");
+  const exts = ["png","jpg","jpeg","webp","PNG","JPG","JPEG"];
+  let i = 0;
+  img.onerror = () => {
+    i++;
+    if (i < exts.length) img.src = base + "." + exts[i];
+    else img.closest(".p-banner")?.remove();
+  };
+  img.src = base + "." + exts[0];
+});
 
-  certs: () => headHTML({name:"Certificates", monogram:"✦", color:"#FFD166"}, "Awards and credentials — tap any one to read it full size") +
-    `<div class="view-body"><div class="cert-grid">${CERTS.map(c =>
-      `<button class="cert" ${c.image ? `data-full="${esc(c.image)}"` : ""}>
-         <div class="thumb${c.image ? "" : " empty"}">${c.image ? `<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy">` : `images/${slug(c.name)}.png`}</div>
-         <div class="meta"><strong>${esc(c.name)}</strong><span>${esc(c.issuer)} · ${esc(c.date)}</span></div>
-       </button>`).join("")}</div></div>`,
+/* ---------- certificates ---------- */
+$("#certs").innerHTML = CERTS.map(c => `
+  <div class="cert">
+    <div class="thumb${c.image ? "" : " empty"}">${
+      c.image ? `<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy" data-full="${esc(c.image)}">`
+              : `images/${slug(c.name)}.jpg`}</div>
+    <div class="meta"><strong>${esc(c.name)}</strong><span>${esc(c.issuer)} · ${esc(c.date)}</span></div>
+  </div>`).join("");
 
-  contact: () => headHTML({name:"Contact", monogram:"✉", color:"#6FE3C0"}, "I read everything and reply within a day") +
-    `<div class="view-body"><div class="links">
-       <a class="linkrow" href="mailto:${esc(PROFILE.email)}"><span>${esc(PROFILE.email)}</span><span>Email</span></a>
-       ${PROFILE.socials.filter(s=>!s.url.startsWith("mailto")).map(s =>
-         `<a class="linkrow" href="${esc(s.url)}" target="_blank" rel="noopener"><span>${esc(s.label)}</span><span>↗</span></a>`).join("")}
-       <a class="linkrow" href="${esc(PROFILE.resume)}" download><span>Download my resume</span><span>PDF</span></a>
-     </div></div>`
-};
-
-/* ---------- open / close ---------- */
-const view = $("#view"), screen = document.querySelector(".screen");
-let isOpen = false;
-
-function open(html, originEl) {
-  const s = screen.getBoundingClientRect();
-  const o = originEl.getBoundingClientRect();
-  view.style.setProperty("--ox", ((o.left + o.width/2 - s.left) / s.width * 100) + "%");
-  view.style.setProperty("--oy", ((o.top + o.height/2 - s.top) / s.height * 100) + "%");
-  view.innerHTML = html;
-  view.scrollTop = 0;
-  requestAnimationFrame(() => view.classList.add("open"));
-  isOpen = true;
-}
-function close() {
-  view.classList.remove("open");
-  isOpen = false;
-  setTimeout(() => { if (!isOpen) view.innerHTML = ""; }, 480);
-}
-
+/* ---------- lightbox ---------- */
 document.addEventListener("click", e => {
-  const appBtn = e.target.closest("[data-app]");
-  if (appBtn) return open(appHTML(APPS[+appBtn.dataset.app]), appBtn);
-
-  const pageBtn = e.target.closest("[data-page]");
-  if (pageBtn) return open(PAGES[pageBtn.dataset.page](), pageBtn);
-
-  if (e.target.closest("[data-close]")) return close();
-
-  const zoom = e.target.closest("[data-full]");
-  if (zoom) {
-    $("#lightboxImg").src = zoom.dataset.full;
-    $("#lightbox").classList.add("open");
-    return;
-  }
+  const z = e.target.closest("[data-full]");
+  if (z) { $("#lightboxImg").src = z.dataset.full; $("#lightbox").classList.add("open"); return; }
+  const zi = e.target.closest("img.zoom");
+  if (zi) { $("#lightboxImg").src = zi.currentSrc || zi.src; $("#lightbox").classList.add("open"); return; }
   if (e.target.closest("#lightbox")) $("#lightbox").classList.remove("open");
 });
-
 document.addEventListener("keydown", e => {
-  if (e.key !== "Escape") return;
-  if ($("#lightbox").classList.contains("open")) $("#lightbox").classList.remove("open");
-  else if (isOpen) close();
+  if (e.key === "Escape") $("#lightbox").classList.remove("open");
 });
 
-/* swipe down on the view to go home */
-let startY = null;
-view.addEventListener("touchstart", e => { if (view.scrollTop <= 0) startY = e.touches[0].clientY; }, {passive:true});
-view.addEventListener("touchmove", e => {
-  if (startY !== null && e.touches[0].clientY - startY > 90) { close(); startY = null; }
-}, {passive:true});
-view.addEventListener("touchend", () => { startY = null; });
+/* ---------- scroll reveal ---------- */
+const io = new IntersectionObserver(es => {
+  es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+}, { rootMargin: "0px 0px -8% 0px", threshold: .08 });
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+/* ---------- nav state ---------- */
+const nav = $("#nav");
+addEventListener("scroll", () => nav.classList.toggle("stuck", scrollY > 12), { passive: true });
+const links = [...document.querySelectorAll("#navlinks a")];
+const spy = new IntersectionObserver(es => {
+  es.forEach(en => {
+    if (!en.isIntersecting) return;
+    links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + en.target.id));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+["experience","work","certificates","skills","about"].forEach(id => {
+  const el = document.getElementById(id); if (el) spy.observe(el);
+});
 </script>
 </body>
 </html>
