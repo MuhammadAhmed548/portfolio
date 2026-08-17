@@ -323,10 +323,10 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 }
 .cert:hover{border-color:rgba(255,255,255,.3);transform:translateY(-3px)}
 .cert .thumb{
-  height:88px;background:#100E1A;display:grid;place-items:center;
+  height:104px;background:#100E1A;display:grid;place-items:center;
   border-bottom:1px solid var(--line);
 }
-.cert .thumb img{width:100%;height:100%;object-fit:cover}
+.cert .thumb img{width:100%;height:100%;object-fit:cover;object-position:center top}
 .cert .thumb.empty{font-family:var(--mono);font-size:9px;color:var(--dim);text-align:center;padding:8px}
 .cert .meta{padding:11px 12px}
 .cert .meta strong{display:block;font-size:12.5px;font-weight:600;line-height:1.35}
@@ -453,12 +453,12 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
    ══════════════════════════════════════════════════════════════ */
 
 const PROFILE = {
-  name:   "Your Name",
+  name:   "Mohammad Ahmed",
   role:   "Mobile Developer",
   status: "Open to work",
-  monogram: "YN",                  // shows if photo is missing
-  photo:  "",                      // e.g. "img/me.jpg"
-  resume: "img/resume.pdf",        // put your PDF in the img folder
+  monogram: "MA",                  // shows if photo is missing
+  photo:  "",                      // e.g. "images/me.jpg"
+  resume: "images/resume.pdf",        // put your PDF in the images folder
   email:  "you@example.com",
   socials: [
     { label: "GitHub",   url: "https://github.com/yourhandle" },
@@ -480,8 +480,8 @@ const PROFILE = {
 /* ── YOUR APPS ────────────────────────────────────────────────
    color     : the icon colour + the wash behind the header
    monogram  : letter shown if no icon image
-   icon      : "img/split-icon.png"  (optional)
-   screenshots: ["img/split-1.png","img/split-2.png"]  (leave [] for now)
+   icon      : "images/split-icon.png"  (optional)
+   screenshots: ["images/split-1.png","images/split-2.png"]  (leave [] for now)
    highlight : the paragraph recruiters actually read. Be specific.
    ──────────────────────────────────────────────────────────── */
 const APPS = [
@@ -584,7 +584,10 @@ const APPS = [
 ];
 
 /* ── CERTIFICATES ───────────────────────────────────────────── */
+
 const CERTS = [
+  { name: "Emerging Talent Award",         issuer: "PITB · Software Engineering Team", date: "2026",
+    image: "images/pitb-certificate.jpeg" },
   { name: "Meta Android Developer",        issuer: "Coursera",  date: "2025", image: "" },
   { name: "Flutter & Dart Complete Guide", issuer: "Udemy",     date: "2024", image: "" },
   { name: "Google UX Design",              issuer: "Coursera",  date: "2024", image: "" },
@@ -657,7 +660,7 @@ $("#dock").innerHTML = DOCK.map(d =>
 function galleryHTML(shots, name) {
   if (!shots || !shots.length) {
     return `<div class="gallery">${[1,2,3].map(n =>
-      `<div class="shot empty"><span>screenshot ${n}<br>↓<br>img/${slug(name)}-${n}.png</span></div>`
+      `<div class="shot empty"><span>screenshot ${n}<br>↓<br>images/${slug(name)}-${n}.png</span></div>`
     ).join("")}</div>`;
   }
   return `<div class="gallery">${shots.map(s =>
@@ -701,10 +704,10 @@ const PAGES = {
     `<div class="view-body">${PROFILE.skills.map(s =>
       `<div class="skillset"><h4>${esc(s.group)}</h4><p style="font-size:14px;line-height:1.7;color:#D9D4E6">${esc(s.items)}</p></div>`).join("")}</div>`,
 
-  certs: () => headHTML({name:"Certificates", monogram:"✦", color:"#FFD166"}, CERTS.length + " completed courses and credentials") +
+  certs: () => headHTML({name:"Certificates", monogram:"✦", color:"#FFD166"}, "Awards and credentials — tap any one to read it full size") +
     `<div class="view-body"><div class="cert-grid">${CERTS.map(c =>
       `<button class="cert" ${c.image ? `data-full="${esc(c.image)}"` : ""}>
-         <div class="thumb${c.image ? "" : " empty"}">${c.image ? `<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy">` : `img/${slug(c.name)}.png`}</div>
+         <div class="thumb${c.image ? "" : " empty"}">${c.image ? `<img src="${esc(c.image)}" alt="${esc(c.name)}" loading="lazy">` : `images/${slug(c.name)}.png`}</div>
          <div class="meta"><strong>${esc(c.name)}</strong><span>${esc(c.issuer)} · ${esc(c.date)}</span></div>
        </button>`).join("")}</div></div>`,
 
