@@ -13,41 +13,118 @@
    TOKENS — light, iOS-derived, saturated
    ============================================================ */
 :root{
-  --paper:#132430;          /* deep petrol — page */
-  --card:var(--grad-card);  /* petrol panel gradient */
-  --ink:#EAF2F5;            /* cool near-white — body copy */
-  --heading:#EAF2F5;
-  --muted:#A8BFC9;
-  --dim:#96AEB9;
-  --line:rgba(234,242,245,.16);
-  --line-2:#2B5B6B;
-  --fill:rgba(234,242,245,.055);
-  --fill-2:rgba(234,242,245,.10);
+  --paper:#111634;          /* deep indigo — page */
+  --card:var(--grad-card);
+  --ink:#E9ECFA;
+  --heading:#E9ECFA;
+  --muted:#A9B0D8;
+  --dim:#8F97C4;
+  --line:rgba(233,236,250,.14);
+  --line-2:#2E3566;
+  --fill:rgba(233,236,250,.05);
+  --fill-2:rgba(233,236,250,.095);
 
-  --accent:#F2B24C;         /* brass — primary accent */
-  --accent-dark:#2F7D8C;    /* teal — secondary */
-  --accent-soft:rgba(242,178,76,.13);
-  --teal:#F2B24C;
+  --accent:#FFB35C;         /* amber — text-safe accent */
+  --accent-dark:#7A6BFF;    /* indigo — fills */
+  --accent-soft:rgba(122,107,255,.16);
+  --teal:#4FD1C5;
 
-  /* gradients built from the palette */
-  --grad-warm:linear-gradient(96deg,#F2B24C 0%,#F7D08A 100%);
-  --grad-deep:linear-gradient(96deg,#2F7D8C 0%,#F2B24C 100%);
-  --grad-full:linear-gradient(90deg,#2B5B6B 0%,#2F7D8C 26%,#47A8BA 50%,#F2B24C 82%,#F7D08A 100%);
-  --grad-card:linear-gradient(158deg,rgba(43,91,107,.50) 0%,rgba(27,53,67,.86) 48%,rgba(19,36,48,.94) 100%);
-  --grad-page:linear-gradient(178deg,#0F1F29 0%,#132430 32%,#163342 62%,#1A3A48 86%,#1B3D4C 100%);
+  /* gradients */
+  --grad-warm:linear-gradient(96deg,#7A6BFF 0%,#FF5C82 52%,#FFB35C 100%);
+  --grad-deep:linear-gradient(96deg,#7A6BFF 0%,#3B9BFF 100%);
+  --grad-full:linear-gradient(90deg,#7A6BFF 0%,#3B9BFF 28%,#FF5C82 64%,#FFB35C 100%);
+  --grad-card:linear-gradient(158deg,rgba(58,58,120,.46) 0%,rgba(26,32,68,.88) 50%,rgba(17,22,52,.95) 100%);
+  --grad-page:linear-gradient(178deg,#0E1230 0%,#111634 34%,#141A3C 68%,#182046 100%);
 
-  --shadow-sm:0 2px 10px rgba(6,14,20,.4);
-  --shadow:0 16px 40px -16px rgba(6,14,20,.65);
-  --shadow-lg:0 34px 74px -28px rgba(6,14,20,.8);
+  /* surfaces that differ between themes */
+  --card-solid:#1A2044;
+  --nav-bg:rgba(17,22,52,.78);
+  --nav-bg-2:rgba(17,22,52,.93);
+  --overlay:rgba(4,6,20,.74);
+  --overlay-2:rgba(4,6,20,.95);
+  --input-focus:rgba(233,236,250,.09);
+  --blob-1:rgba(122,107,255,.16);
+  --blob-2:rgba(233,236,250,.10);
+  --mesh:rgba(233,236,250,.05);
+  --vignette:rgba(17,22,52,.55);
+  --net-line:150,160,255;
+  --net-dot:rgba(170,180,255,.42);
+  --status-fg:#4FD1C5;
+  --status-bg:rgba(79,209,197,.10);
+  --status-bd:rgba(79,209,197,.30);
+  --status-ring:rgba(79,209,197,.55);
+  --err:#FF5C82;
+  --err-fg:#FFB0C2;
+  --btn-ink:#fff;
+
+  --shadow-sm:0 2px 10px rgba(4,6,20,.45);
+  --shadow:0 16px 40px -16px rgba(4,6,20,.7);
+  --shadow-lg:0 34px 74px -28px rgba(4,6,20,.85);
 
   --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
   --body:"Figtree",ui-sans-serif,system-ui,sans-serif;
   --mono:"JetBrains Mono",ui-monospace,monospace;
   --ease:cubic-bezier(.22,1,.36,1);
-  --ts:1;                   /* text scale — raise to 1.1 for larger prose */
+  --ts:1;
   --pad:clamp(20px,5vw,70px);
   --max:1180px;
 }
+/* ============================================================
+   LIGHT THEME
+   ============================================================ */
+[data-theme="light"]{
+  --paper:#F4F5FC;
+  --ink:#171B3A;
+  --heading:#171B3A;
+  --muted:#4C5378;
+  --dim:#606894;
+  --line:rgba(23,27,58,.13);
+  --line-2:#C7CCE8;
+  --fill:rgba(23,27,58,.04);
+  --fill-2:rgba(23,27,58,.075);
+
+  --accent:#5B4BC4;
+  --accent-dark:#7A6BFF;
+  --accent-soft:rgba(91,75,196,.11);
+  --teal:#0E7A6E;
+
+  --grad-warm:linear-gradient(96deg,#5B4BC4 0%,#CE3260 52%,#B86A14 100%);
+  --grad-deep:linear-gradient(96deg,#5B4BC4 0%,#1A6FC9 100%);
+  --grad-full:linear-gradient(90deg,#5B4BC4 0%,#1A6FC9 28%,#CE3260 64%,#B86A14 100%);
+  --grad-card:linear-gradient(158deg,#FFFFFF 0%,#FBFBFE 52%,#F7F8FD 100%);
+  --grad-page:linear-gradient(178deg,#F8F9FE 0%,#F4F5FC 34%,#EFF1FB 68%,#E9ECF8 100%);
+
+  --card-solid:#FFFFFF;
+  --nav-bg:rgba(244,245,252,.8);
+  --nav-bg-2:rgba(244,245,252,.95);
+  --overlay:rgba(23,27,58,.45);
+  --overlay-2:rgba(23,27,58,.9);
+  --input-focus:#FFFFFF;
+  --blob-1:rgba(122,107,255,.15);
+  --blob-2:rgba(255,92,130,.09);
+  --mesh:rgba(23,27,58,.045);
+  --vignette:rgba(233,236,248,.7);
+  --net-line:91,75,196;
+  --net-dot:rgba(91,75,196,.28);
+  --status-fg:#0E7A6E;
+  --status-bg:rgba(14,122,110,.10);
+  --status-bd:rgba(14,122,110,.30);
+  --status-ring:rgba(14,122,110,.45);
+  --err:#C62B50;
+  --err-fg:#A81F41;
+  --btn-ink:#FFFFFF;
+
+  --shadow-sm:0 2px 8px rgba(23,27,58,.06);
+  --shadow:0 14px 34px -14px rgba(23,27,58,.20);
+  --shadow-lg:0 32px 68px -28px rgba(23,27,58,.28);
+}
+
+/* ---- base ---- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:92px}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background-color .45s var(--ease),color .45s var(--ease)}
 h1,h2,h3{color:var(--heading)}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
@@ -59,29 +136,28 @@ section{padding-block:clamp(66px,9vw,120px)}
 /* ---- ambient background ---- */
 .ambient{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;
   background:
-    radial-gradient(1100px 760px at 12% -8%,rgba(43,91,107,.55),transparent 62%),
-    radial-gradient(950px 820px at 96% 16%,rgba(47,125,140,.32),transparent 62%),
-    radial-gradient(900px 700px at 52% 108%,rgba(242,178,76,.18),transparent 66%),
+    radial-gradient(1100px 760px at 12% -8%,var(--blob-1),transparent 62%),
+    radial-gradient(950px 820px at 96% 16%,var(--blob-2),transparent 62%),
     var(--grad-page)}
 .ambient .blob{position:absolute;border-radius:50%;filter:blur(90px)}
 .ambient .b1{width:60vw;height:60vw;max-width:860px;max-height:860px;top:-24%;left:-16%;
-  background:radial-gradient(circle,rgba(242,178,76,.16) 0%,transparent 66%);animation:drift1 26s ease-in-out infinite alternate}
+  background:radial-gradient(circle,var(--blob-1) 0%,transparent 66%);animation:drift1 26s ease-in-out infinite alternate}
 .ambient .b2{width:52vw;height:52vw;max-width:740px;max-height:740px;top:8%;right:-18%;
-  background:radial-gradient(circle,rgba(234,242,245,.10) 0%,transparent 66%);animation:drift2 32s ease-in-out infinite alternate}
+  background:radial-gradient(circle,var(--blob-2) 0%,transparent 66%);animation:drift2 32s ease-in-out infinite alternate}
 .ambient .b3{display:none}
 @keyframes drift1{to{transform:translate3d(9vw,7vh,0) scale(1.16)}}
 @keyframes drift2{to{transform:translate3d(-8vw,11vh,0) scale(1.12)}}
 @keyframes drift3{to{transform:translate3d(8vw,-9vh,0) scale(1.18)}}
 .ambient .mesh{position:absolute;inset:0;
-  background-image:linear-gradient(rgba(234,242,245,.05) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(234,242,245,.05) 1px,transparent 1px);
+  background-image:linear-gradient(var(--mesh) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--mesh) 1px,transparent 1px);
   background-size:62px 62px;
   mask-image:radial-gradient(ellipse 95% 65% at 50% 0%,#000 12%,transparent 72%);
   -webkit-mask-image:radial-gradient(ellipse 95% 65% at 50% 0%,#000 12%,transparent 72%)}
 .ambient #net{position:absolute;inset:0;width:100%;height:100%;opacity:.55}
 .ambient .scan{display:none}
 .ambient .vignette{position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 130% 90% at 50% 0%,transparent 54%,rgba(19,36,48,.55) 100%)}
+  background:radial-gradient(ellipse 130% 90% at 50% 0%,transparent 54%,var(--vignette) 100%)}
 .hero-video{position:fixed;top:0;left:0;width:100%;height:100vh;object-fit:cover;opacity:.16;z-index:-1;
   mask-image:linear-gradient(180deg,#000 35%,transparent 92%);
   -webkit-mask-image:linear-gradient(180deg,#000 35%,transparent 92%)}
@@ -102,10 +178,10 @@ h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-he
    ============================================================ */
 .nav{position:sticky;top:0;z-index:100;
   backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);
-  background:rgba(19,36,48,.78);border-bottom:1px solid transparent;
+  background:var(--nav-bg);border-bottom:1px solid transparent;
   transition:border-color .35s,box-shadow .35s,background .35s}
-.nav.stuck{border-bottom-color:var(--line);box-shadow:0 8px 28px -18px rgba(6,14,20,.9);
-  background:rgba(19,36,48,.93)}
+.nav.stuck{border-bottom-color:var(--line);box-shadow:0 8px 28px -18px rgba(4,6,20,.9);
+  background:var(--nav-bg-2)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
 .progress{position:absolute;left:0;bottom:-1px;height:2.5px;width:100%;transform:scaleX(0);transform-origin:left;
   background:var(--grad-full)}
@@ -122,115 +198,96 @@ h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-he
 .navlinks a:hover::after,.navlinks a.active::after{transform:scaleX(1);transform-origin:left}
 .navlinks a.active{color:var(--ink);font-weight:500}
 .nav .cta{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;font-weight:500;
-  padding:11px 19px;border-radius:999px;color:#fff;white-space:nowrap;cursor:pointer;
-  background:var(--grad-warm);color:#132430;
-  box-shadow:0 6px 16px -7px rgba(242,178,76,.5);
+  padding:11px 19px;border-radius:999px;white-space:nowrap;cursor:pointer;
+  background:var(--grad-deep);color:var(--btn-ink);
+  box-shadow:0 6px 16px -7px rgba(122,107,255,.5);
   transition:transform .24s var(--ease),box-shadow .24s var(--ease)}
-.nav .cta:hover{transform:translateY(-2px);background:var(--grad-deep);box-shadow:0 12px 26px -10px rgba(242,178,76,.55)}
+.theme-toggle{width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  border:1px solid var(--line-2);display:grid;place-items:center;color:var(--muted);
+  transition:color .22s var(--ease),border-color .22s var(--ease),transform .3s var(--ease)}
+.theme-toggle:hover{color:var(--accent);border-color:var(--accent);transform:rotate(18deg)}
+.theme-toggle .moon{display:none}
+[data-theme="light"] .theme-toggle .moon{display:block}
+[data-theme="light"] .theme-toggle .sun{display:none}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav .cta:hover{transform:translateY(-2px);background:var(--grad-deep);box-shadow:0 12px 26px -10px rgba(122,107,255,.55)}
 .nav .cta:active{transform:translateY(0) scale(.97)}
 @media(max-width:860px){.navlinks{display:none}}
 
 /* ============================================================
-   HERO — portrait left, name right
+   HERO — copy left, phone right
    ============================================================ */
-.hero{padding-block:clamp(38px,6vh,80px) clamp(46px,7vh,92px)}
-.hero-grid{display:grid;grid-template-columns:minmax(240px,.8fr) 1.2fr;
-  gap:clamp(28px,5vw,72px);align-items:center}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,6vw,80px);
+  align-items:center;padding-block:clamp(46px,7vw,84px) clamp(54px,8vw,100px)}
 
-/* --- portrait --- */
-.hero-photo{position:relative;justify-self:center;width:100%;max-width:360px}
-.photo-glow{position:absolute;inset:-14% -10% -6%;border-radius:50%;z-index:-1;
-  background:radial-gradient(circle,rgba(242,178,76,.24) 0%,rgba(47,125,140,.12) 46%,transparent 70%);
-  filter:blur(24px)}
-.portrait-frame{position:relative;display:flex;align-items:flex-end;justify-content:center;
-  min-height:200px;
-  font-family:var(--display);font-weight:800;font-size:clamp(52px,7vw,104px);
-  letter-spacing:-.05em;color:var(--fill-2)}
-.portrait-frame img{width:100%;height:auto;object-fit:contain}
+.identity{display:flex;align-items:center;gap:15px;margin-bottom:26px}
+.portrait-frame{width:70px;height:70px;border-radius:22px;flex-shrink:0;overflow:hidden;
+  position:relative;display:grid;place-items:center;
+  background:var(--grad-deep);
+  font-family:var(--display);font-weight:800;font-size:23px;color:#fff;
+  box-shadow:0 14px 30px -12px rgba(122,107,255,.6),0 0 0 4px rgba(233,236,250,.07)}
+.portrait-frame img{width:100%;height:100%;object-fit:cover;object-position:center 20%}
+.portrait-frame.is-cutout img{object-fit:cover}
+.identity .who strong{display:block;font-family:var(--display);font-size:21px;font-weight:800;
+  letter-spacing:-.025em;line-height:1.15}
+.identity .role-line{margin-top:6px}
+.role-line{font-family:var(--mono);font-size:11.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--dim)}
 
-/* transparent PNG: no frame, soft ground shadow */
-.portrait-frame.is-cutout img{max-height:var(--ph,min(56vh,520px));width:auto;max-width:100%;
-  filter:drop-shadow(0 26px 46px rgba(6,14,20,.6));
-  mask-image:linear-gradient(180deg,#000 90%,transparent 100%);
-  -webkit-mask-image:linear-gradient(180deg,#000 90%,transparent 100%)}
-
-/* ordinary photo: a deliberate framed portrait */
-.portrait-frame.is-photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;
-  object-position:center 20%;border-radius:26px;border:1px solid var(--line-2);
-  box-shadow:var(--shadow-lg)}
-.portrait-frame.is-photo::after{content:"";position:absolute;inset:auto 0 0 0;height:32%;
-  border-radius:0 0 26px 26px;pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(6,14,20,.34))}
-.hero-photo.photo-mode .photo-glow{opacity:.5}
-
-/* --- copy --- */
-.greet{font-family:var(--mono);font-size:clamp(11px,1.1vw,13px);letter-spacing:.22em;
-  text-transform:uppercase;color:var(--accent);margin-bottom:14px}
-.hero h1{font-family:var(--display);font-weight:800;
-  font-size:clamp(38px,5.6vw,74px);line-height:.94;letter-spacing:-.045em;margin-bottom:12px}
-.title{font-family:var(--display);font-weight:800;
-  font-size:clamp(24px,3.2vw,42px);line-height:1;letter-spacing:-.038em}
-.title em{font-style:normal;background:var(--grad-warm);
-  -webkit-background-clip:text;background-clip:text;color:transparent}
-.role-line{font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--dim);font-size:clamp(10.5px,1vw,12.5px);margin-top:18px}
-.status{display:inline-flex;align-items:center;gap:8px;margin-top:26px;
+.status{display:inline-flex;align-items:center;gap:8px;margin-bottom:24px;
   font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--accent);background:var(--accent-soft);border:1px solid rgba(242,178,76,.34);
+  color:var(--status-fg);background:var(--status-bg);border:1px solid var(--status-bd);
   padding:7px 14px;border-radius:999px}
-.status i{width:6px;height:6px;border-radius:50%;background:var(--accent);
-  box-shadow:0 0 0 0 rgba(242,178,76,.55);animation:pulse 2.6s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(242,178,76,0)}100%{box-shadow:0 0 0 0 rgba(242,178,76,0)}}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--status-fg);
+  box-shadow:0 0 0 0 var(--status-ring);animation:pulse 2.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+
+.hero h1{font-family:var(--display);font-weight:800;
+  font-size:clamp(42px,6.2vw,80px);line-height:.95;letter-spacing:-.043em;margin-bottom:24px}
+.hero h1 em{font-style:normal;display:block;background:var(--grad-warm);
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
 .btn{display:inline-flex;align-items:center;gap:9px;padding:15px 27px;border-radius:13px;
   font-size:15.5px;font-weight:600;cursor:pointer;
   transition:transform .24s var(--ease),box-shadow .24s var(--ease),background .24s,border-color .24s,color .24s}
-.btn-primary{background:var(--grad-warm);color:#132430;
-  box-shadow:0 10px 26px -12px rgba(242,178,76,.45)}
-.btn-primary:hover{transform:translateY(-3px);background:var(--grad-deep);box-shadow:0 18px 34px -14px rgba(242,178,76,.5)}
+.btn-primary{background:var(--grad-deep);color:var(--btn-ink);
+  box-shadow:0 12px 30px -12px rgba(122,107,255,.75)}
+.btn-primary:hover{transform:translateY(-3px);background:var(--grad-warm);color:#111634;
+  box-shadow:0 20px 40px -14px rgba(255,92,130,.6)}
 .btn-primary:active{transform:translateY(-1px) scale(.98)}
 .btn-ghost{border:1.5px solid var(--line-2);background:var(--card);color:var(--ink);box-shadow:var(--shadow-sm)}
 .btn-ghost:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent);box-shadow:var(--shadow)}
 
-@media(max-width:860px){
-  .hero{padding-block:24px 40px}
-  .hero-grid{grid-template-columns:1fr;gap:26px;text-align:center}
-  .hero-photo{max-width:230px}
-  .hero-actions,.eyebrow{justify-content:center}
-  .role-line{margin-top:14px}
-  .portrait-frame.is-cutout img{--ph:min(40vh,320px)}
-}
-
-/* ---- intro band under the stage ---- */
-.intro-band{padding-block:clamp(40px,6vw,76px) clamp(56px,8vw,100px);
-  border-bottom:1px solid var(--line)}
-.intro-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
-.lede{color:var(--muted);font-size:calc(clamp(18.5px,2vw,23px) * var(--ts));line-height:1.6;max-width:48ch}
-.stats{display:flex;gap:32px;flex-wrap:wrap}
-.stat b{display:block;font-family:var(--display);font-size:clamp(28px,3.2vw,36px);font-weight:800;
+.lede{color:var(--muted);font-size:calc(clamp(17px,1.85vw,20.5px) * var(--ts));line-height:1.66;max-width:46ch}
+.stats{display:flex;gap:34px;flex-wrap:wrap;margin-top:44px}
+.stat b{display:block;font-family:var(--display);font-size:clamp(28px,3.2vw,34px);font-weight:800;
   letter-spacing:-.035em;background:var(--grad-warm);
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .stat span{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
-@media(max-width:860px){.intro-grid{grid-template-columns:1fr;gap:30px}}
 
-/* ---- work section head holds the phone ---- */
-.work-head{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,60px);
-  align-items:center;margin-bottom:clamp(18px,3vw,34px)}
-@media(max-width:860px){.work-head{grid-template-columns:1fr;gap:34px}}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;text-align:center;padding-block:26px 44px}
+  .lede{margin-inline:auto}
+  .hero-actions,.stats,.identity{justify-content:center}
+  .identity{text-align:left}
+  .hero-phone{order:-1;max-width:250px}
+  .phone{transform:none}
+}
 
 /* ---- phone ---- */
 .hero-phone{justify-self:center;width:100%;max-width:270px;perspective:1200px}
 .phone{border-radius:44px;padding:9px;
-  background:linear-gradient(160deg,#2A6274,#132430 45%,#1B3543);
-  box-shadow:0 0 0 1px rgba(234,242,245,.16),var(--shadow-lg),0 0 80px -32px rgba(242,178,76,.35);
+  background:linear-gradient(160deg,#3A3A78,#111634 45%,#1A2044);
+  box-shadow:0 0 0 1px rgba(233,236,250,.16),var(--shadow-lg),0 0 80px -32px rgba(122,107,255,.35);
   transform:rotateY(-9deg) rotateX(3deg);transition:transform .8s var(--ease)}
 .hero-phone:hover .phone{transform:rotateY(0deg) rotateX(0deg)}
 .phone-screen{border-radius:35px;overflow:hidden;position:relative;
-  background:linear-gradient(178deg,#1E4557,#16303D 52%,#132430);
+  background:linear-gradient(178deg,#232A5A,#141A3C 52%,#111634);
   aspect-ratio:9/18.6;padding:34px 16px 16px}
 .phone-screen::after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(220px 180px at 80% 6%,rgba(242,178,76,.24),transparent 70%),
-             radial-gradient(200px 200px at 6% 90%,rgba(47,125,140,.32),transparent 70%)}
+  background:radial-gradient(220px 180px at 80% 6%,rgba(122,107,255,.24),transparent 70%),
+             radial-gradient(200px 200px at 6% 90%,rgba(59,155,255,.32),transparent 70%)}
 .phone-bar{position:absolute;top:0;left:0;right:0;height:30px;padding:0 18px;z-index:2;
   display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:600;color:#fff}
 .phone-hint{position:relative;z-index:2;font-family:var(--mono);font-size:8.5px;letter-spacing:.13em;
@@ -239,18 +296,18 @@ h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-he
 .ic{display:flex;flex-direction:column;align-items:center;gap:5px;
   opacity:0;transform:scale(.4);
   transition:opacity .5s var(--ease) var(--d,0s),transform .5s var(--ease) var(--d,0s)}
-.reveal.in .ic,body.loaded .ic{opacity:1;transform:none}
+body.loaded .ic{opacity:1;transform:none}
 .ic:hover{transform:translateY(-4px) scale(1.06)}
 .ic:active{transform:scale(.9)}
 .ic .sq{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;position:relative;
   overflow:hidden;font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:-.02em;color:#fff;
-  box-shadow:0 6px 16px -5px rgba(6,14,20,.55),inset 0 1px 0 rgba(255,255,255,.24)}
+  box-shadow:0 6px 16px -5px rgba(4,6,20,.55),inset 0 1px 0 rgba(255,255,255,.24)}
 .ic .sq::after{content:"";position:absolute;inset:0;
   background:linear-gradient(160deg,rgba(255,255,255,.30),transparent 55%)}
 .sq.has-img::after{display:none}
 .ic .sq img{width:100%;height:100%;object-fit:cover}
 .ic small{font-size:8.5px;color:rgba(255,255,255,.88);text-align:center;line-height:1.2;
-  text-shadow:0 1px 3px rgba(6,14,20,.8);max-width:56px}
+  text-shadow:0 1px 3px rgba(4,6,20,.8);max-width:56px}
 
 /* ---- stage responsive ---- */
 @media(max-width:900px){
@@ -264,7 +321,7 @@ h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-he
 .timeline{margin-top:44px;position:relative;padding-left:2px}
 .tl-track{position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line);border-radius:2px}
 .tl-fill{position:absolute;left:5px;top:8px;width:2px;border-radius:2px;transform-origin:top;
-  background:linear-gradient(180deg,#2F7D8C,#F2B24C 62%,#F7D08A);
+  background:linear-gradient(180deg,#3B9BFF,#FFB35C 62%,#FFD09B);
   transform:scaleY(0);will-change:transform}
 .tl{position:relative;padding-left:34px;padding-bottom:48px}
 .tl:last-child{padding-bottom:0}
@@ -382,7 +439,7 @@ h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-he
 /* the hard-part rule fills as you scroll through the project */
 .p-hard{border-left:0;position:relative}
 .p-hard::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2.5px;border-radius:2px;
-  background:linear-gradient(180deg,#2F7D8C,#F2B24C);transform:scaleY(var(--pp,0));transform-origin:top}
+  background:linear-gradient(180deg,#3B9BFF,#FFB35C);transform:scaleY(var(--pp,0));transform-origin:top}
 
 /* screenshots settle in one after another */
 .shot-wrap{opacity:0;transform:translateY(30px) rotate(-2.2deg);
@@ -423,10 +480,10 @@ h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-he
 .shot-wrap .frame{flex:none;width:100%}
 .shot-cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--dim);
   text-align:center;line-height:1.5;padding-inline:4px}
-.frame{border-radius:27px;padding:6px;transform:translateY(var(--py,0px));background:linear-gradient(160deg,#2A6274,#132430 45%,#1B3543);
+.frame{border-radius:27px;padding:6px;transform:translateY(var(--py,0px));background:linear-gradient(160deg,#3A3A78,#111634 45%,#1A2044);
   box-shadow:var(--shadow);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
 .frame:hover{transform:translateY(calc(var(--py,0px) - 9px)) scale(1.02);box-shadow:var(--shadow-lg)}
-.frame .inner{border-radius:22px;overflow:hidden;aspect-ratio:9/19.5;background:#132430;
+.frame .inner{border-radius:22px;overflow:hidden;aspect-ratio:9/19.5;background:#111634;
   display:grid;place-items:center}
 .frame img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}
 .frame .ph{font-family:var(--mono);font-size:9.5px;color:rgba(255,255,255,.6);text-align:center;padding:16px;line-height:1.9}
@@ -499,12 +556,12 @@ h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-he
    MODAL FORM
    ============================================================ */
 .modal{position:fixed;inset:0;z-index:400;display:grid;place-items:center;padding:22px;
-  background:rgba(7,16,22,.74);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  background:var(--overlay);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   opacity:0;pointer-events:none;transition:opacity .3s ease}
 .modal.open{opacity:1;pointer-events:auto}
 .sheet{width:min(524px,100%);max-height:88dvh;overflow-y:auto;background:var(--card);
   border:1px solid var(--line);border-radius:24px;padding:30px clamp(20px,4vw,34px);
-  box-shadow:0 44px 96px -30px rgba(6,14,20,.85);
+  box-shadow:0 44px 96px -30px rgba(4,6,20,.85);
   transform:translateY(22px) scale(.97);transition:transform .4s var(--ease)}
 .modal.open .sheet{transform:none}
 .sheet-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:6px}
@@ -525,15 +582,15 @@ h2.sec{font-family:var(--display);font-weight:800;letter-spacing:-.035em;line-he
   background-repeat:no-repeat;background-position:right 15px center;padding-right:38px}
 .field input::placeholder,.field textarea::placeholder{color:var(--dim)}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--accent);
-  background:rgba(234,242,245,.09);box-shadow:0 0 0 3px rgba(242,178,76,.20)}
-.field select option{background:#1B3543;color:var(--ink)}
+  background:var(--input-focus);box-shadow:0 0 0 3px rgba(122,107,255,.22)}
+.field select option{background:var(--card-solid);color:var(--ink)}
 .field.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:460px){.field.two{grid-template-columns:1fr}}
 .form-submit{width:100%;justify-content:center;margin-top:8px}
 .form-msg{font-size:13.5px;line-height:1.6;margin-top:14px;padding:13px 15px;border-radius:12px;display:none}
-.form-msg.ok{display:block;background:var(--accent-soft);border:1px solid rgba(242,178,76,.36);color:var(--accent)}
-.form-msg.err{display:block;background:rgba(224,112,95,.14);border:1px solid #E0705F;
-  color:#F3B7AC;font-weight:600}
+.form-msg.ok{display:block;background:var(--accent-soft);border:1px solid rgba(122,107,255,.36);color:var(--accent)}
+.form-msg.err{display:block;background:rgba(255,92,130,.13);border:1px solid var(--err);
+  color:var(--err-fg);font-weight:600}
 .form-alt{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:center;margin-top:16px;line-height:1.7}
 .form-alt a{color:var(--muted);border-bottom:1px solid var(--line-2)}
 .form-alt a:hover{color:var(--accent)}
@@ -562,11 +619,11 @@ footer{border-top:1px solid var(--line);padding-block:30px;font-family:var(--mon
 /* ============================================================
    LIGHTBOX
    ============================================================ */
-.lightbox{position:fixed;inset:0;z-index:300;background:rgba(7,16,22,.95);
+.lightbox{position:fixed;inset:0;z-index:300;background:var(--overlay-2);
   backdrop-filter:blur(14px);display:grid;place-items:center;padding:26px;
   opacity:0;pointer-events:none;transition:opacity .3s ease}
 .lightbox.open{opacity:1;pointer-events:auto}
-.lightbox img{max-width:100%;max-height:88dvh;border-radius:14px;box-shadow:0 40px 90px rgba(6,14,20,.7);
+.lightbox img{max-width:100%;max-height:88dvh;border-radius:14px;box-shadow:0 40px 90px rgba(4,6,20,.7);
   transform:scale(.94);transition:transform .4s var(--ease)}
 .lightbox.open img{transform:none}
 .lightbox .x{position:absolute;top:22px;right:22px;width:44px;height:44px;border-radius:50%;
@@ -583,9 +640,9 @@ footer{border-top:1px solid var(--line);padding-block:30px;font-family:var(--mon
 .rise{opacity:0;transform:translateY(24px);
   transition:opacity .85s var(--ease) var(--d,0s),transform .85s var(--ease) var(--d,0s)}
 body.loaded .rise{opacity:1;transform:none}
-.hero-photo{opacity:0;transform:translateX(-26px) scale(.97)}
-body.loaded .hero-photo{opacity:1;transform:none;
-  transition:opacity 1s var(--ease) .08s,transform 1s var(--ease) .08s}
+.hero-phone{opacity:0;transform:translateY(34px) scale(.96)}
+body.loaded .hero-phone{opacity:1;transform:none;
+  transition:opacity 1s var(--ease) .22s,transform 1s var(--ease) .22s}
 .word{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.06em}
 .word span{display:inline-block;transform:translateY(105%);
   transition:transform .9s var(--ease) var(--d,0s)}
@@ -627,51 +684,60 @@ body.loaded .word span{transform:none}
       <a href="#about">About</a>
       <a href="#hire">Hire me</a>
     </div>
-    <button class="cta" data-open-form>Hire me</button>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Switch to light theme" title="Switch theme">
+        <svg class="sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2.5 12h2M19.5 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+        <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>
+      </button>
+      <button class="cta" data-open-form>Hire me</button>
+    </div>
   </div>
 </nav>
 
 <div id="top"></div>
 
 <!-- ═══════════ HERO ═══════════ -->
-<header class="hero" id="stage">
-  <div class="wrap hero-grid">
+<header class="wrap hero">
+  <div class="hero-copy">
 
-    <div class="hero-photo rise" style="--d:.08s">
-      <span class="photo-glow" aria-hidden="true"></span>
+    <div class="identity rise" style="--d:.06s">
       <div class="portrait-frame" id="portrait"></div>
-    </div>
-
-    <div class="hero-copy">
-      <p class="greet rise" style="--d:.20s">Hi, I am</p>
-      <h1 class="rise" style="--d:.28s" id="hName">Muhammad Ahmed</h1>
-      <h2 class="title rise" style="--d:.36s">Senior iOS <em>Developer</em></h2>
-      <p class="role-line rise" style="--d:.44s" id="hRole"></p>
-
-      <span class="status rise" style="--d:.52s"><i></i><span id="hStatus">Open to work</span></span>
-
-      <div class="hero-actions rise" style="--d:.60s">
-        <a class="btn btn-primary" href="#work">See the work
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
-        <a class="btn btn-ghost" id="hCv" href="#" download>Download CV</a>
+      <div class="who">
+        <strong id="hName">Muhammad Ahmed</strong>
+        <p class="role-line" id="hRole"></p>
       </div>
     </div>
 
+    <span class="status rise" style="--d:.16s"><i></i><span id="hStatus">Open to work</span></span>
+
+    <h1 class="rise" style="--d:.24s">I build iOS apps that<em>hold up under real use.</em></h1>
+    <p class="lede rise" style="--d:.40s" id="hLede"></p>
+
+    <div class="hero-actions rise" style="--d:.50s">
+      <a class="btn btn-primary" href="#work">See the work
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+      <a class="btn btn-ghost" id="hCv" href="#" download>Download CV</a>
+    </div>
+
+    <div class="stats rise" style="--d:.60s" id="hStats"></div>
+  </div>
+
+  <div class="hero-phone">
+    <div class="phone">
+      <div class="phone-screen">
+        <div class="phone-bar"><span id="clock">9:41</span><span>▮▮▮</span></div>
+        <p class="phone-hint">Tap an app to jump to it</p>
+        <div class="icons" id="heroIcons"></div>
+      </div>
+    </div>
   </div>
 </header>
-<!-- ═══════════ INTRO BAND ═══════════ -->
-<section class="intro-band">
-  <div class="wrap intro-grid">
-    <p class="lede reveal" id="hLede"></p>
-    <div class="stats reveal" id="hStats" style="--d:.12s"></div>
-  </div>
-</section>
 
 <section id="experience">
   <div class="wrap">
     <p class="eyebrow reveal">Experience</p>
     <h2 class="sec reveal">Where I've worked</h2>
-    <p class="sec-note reveal">Four years building iOS for public-sector systems, plus product and team-lead work alongside it.</p>
+    <p class="sec-note reveal">Four years on government systems, with product and team-lead work alongside it.</p>
     <div class="timeline" id="timeline">
       <span class="tl-track"></span>
       <span class="tl-fill" id="tlFill"></span>
@@ -681,22 +747,9 @@ body.loaded .word span{transform:none}
 
 <section id="work">
   <div class="wrap">
-    <div class="work-head">
-      <div>
-        <p class="eyebrow reveal">Selected work</p>
-        <h2 class="sec reveal">Nine apps, shipped.</h2>
-        <p class="sec-note reveal">Production iOS work — the architecture, the networking, and the problems that only surface once real people are using it daily.</p>
-      </div>
-      <div class="hero-phone reveal" style="--d:.15s">
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-bar"><span id="clock">9:41</span><span>▮▮▮</span></div>
-            <p class="phone-hint">Tap an app to jump to it</p>
-            <div class="icons" id="heroIcons"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <p class="eyebrow reveal">Selected work</p>
+    <h2 class="sec reveal">Nine apps, shipped.</h2>
+    <p class="sec-note reveal">Everything here is production work. A few of these are used by thousands of people every day.</p>
     <div id="projects"></div>
   </div>
 </section>
@@ -705,7 +758,7 @@ body.loaded .word span{transform:none}
   <div class="wrap">
     <p class="eyebrow reveal">Recognition</p>
     <h2 class="sec reveal">Awards &amp; certificates</h2>
-    <p class="sec-note reveal">Click any one to read it full size.</p>
+    <p class="sec-note reveal">Click any one to see it properly.</p>
     <div class="cert-grid" id="certs"></div>
   </div>
 </section>
@@ -732,7 +785,7 @@ body.loaded .word span{transform:none}
   <div class="wrap">
     <p class="eyebrow reveal">Hire me</p>
     <h2 class="sec reveal">What I can take on</h2>
-    <p class="sec-note reveal">Currently open to senior iOS roles and selected contract work. I reply to every enquiry within a day.</p>
+    <p class="sec-note reveal">I'm open to senior iOS roles and some contract work. I usually reply the same day.</p>
     <div class="hire-grid" id="hireGrid"></div>
     <div class="hire-foot reveal">
       <button class="btn btn-primary" data-open-form>Start a conversation
@@ -745,7 +798,7 @@ body.loaded .word span{transform:none}
 <section class="contact" id="contact">
   <div class="wrap">
     <h2 class="reveal">Let's build something.</h2>
-    <p class="reveal">Open to senior iOS roles and contract work — especially anything with real-time or offline-first requirements.</p>
+    <p class="reveal">Open to senior iOS roles and contract work, especially anything with real-time or offline requirements.</p>
     <a class="mailto reveal" id="mail" href="#"></a>
     <div class="socials reveal" id="socials"></div>
   </div>
@@ -764,7 +817,7 @@ body.loaded .word span{transform:none}
         <svg width="16" height="16" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>
-    <p class="sub">Tell me a little about the role or project and I'll get back to you within a day.</p>
+    <p class="sub">Tell me a bit about the role or the project and I'll get back to you.</p>
 
     <form id="hireForm" novalidate>
       <div class="field two">
@@ -821,13 +874,13 @@ const PROFILE = {
   status: "Open to work",
   formEndpoint: "",             // paste a Formspree URL here (see README); empty = opens email instead
   heroVideo: "",                // optional: "images/hero.mp4" for a video behind the hero
-  hireNote: "Based in Gujranwala, Pakistan \u00b7 open to on-site, hybrid and remote",
+  hireNote: "Based in Gujranwala. Happy with on-site, hybrid or remote.",
   cutout: "images/ahmed-cutout.png",   // transparent-background PNG of you — falls back to photo below
   photoHeight: "60vh",          // how tall you appear in the hero — try 50vh … 72vh
   photo:  "images/ahmed.jpg",   // extension is auto-detected — jpg, jpeg, png or webp all work
   resume: "images/resume.pdf",
   email:  "you@example.com",
-  lede:   "Senior iOS developer at the Punjab Information Technology Board, building government-scale apps in Swift across UIKit and SwiftUI — HR systems used daily by Punjab Police, real-time auction platforms, and public-facing citizen services.",
+  lede:   "Senior iOS developer at PITB in Lahore. I write Swift with UIKit and SwiftUI. Most of what I've built is used every day by Punjab Police and other government departments.",
   stats: [
     { value: "10", label: "Apps shipped" },
     { value: "4+", label: "Years in iOS" },
@@ -839,10 +892,11 @@ const PROFILE = {
     { label: "Email",    url: "mailto:you@example.com" }
   ],
   about: [
-    "I'm a senior iOS developer at the Punjab Information Technology Board, where I've spent the last few years building systems that thousands of government employees depend on every day. Most of my work sits in Swift across UIKit and SwiftUI, and the apps I'm proudest of are the ones where the difficulty isn't the interface — it's keeping a live connection alive, handling data that arrives out of order, and staying usable when the network doesn't cooperate.",
-    "Architecture is where I'm most deliberate. I build on MVVM with coordinators handling navigation, protocol-based dependency injection so view models are testable without a network, and a hard boundary between the networking layer and everything above it. On larger products I've set the project structure from the start and led other iOS developers working inside it, which means the structure has to be something a new developer can navigate in a day.",
-    "Real-time is the area I know best. I built the eAuction platform's live bidding on WebSockets, where every participant has to see the current highest bid the instant it lands, and I've worked through the same problems in chat: reconnection and backoff, offline message queues, optimistic UI that reconciles against server acknowledgement, and push notification handoff when the app goes to background.",
-    "Alongside the building, I handle the parts that keep an app healthy after release — Instruments profiling when scrolling stutters, crash triage, App Store submissions and TestFlight builds — and I review pull requests and mentor junior developers on the team."
+    "I've been at PITB for about four years. The apps I work on aren't the kind anyone downloads for fun. They're HR systems, an auction platform, citizen services. Things people have to use to get through a working day, which changes how you build them.",
+    "Most of my time goes on parts nobody sees. Keeping a socket alive on a bad connection. Making sure messages land in the order they were sent. Getting an app to still be worth opening when there's no signal at all.",
+    "I set projects up with MVVM and coordinators, and I keep the networking layer walled off from everything above it. Not because it's the fashionable way to do it, but because I've handed code to other developers and watched how long it takes them to find their way around.",
+    "Chat is what I know best. I built the messaging in PULSE and the live bidding in eAuction, so I've spent a lot of time on reconnection, offline queues and push notifications.",
+    "The rest of the job is less interesting to talk about. Profiling in Instruments when a list starts stuttering, working out why an app crashed on someone else's phone, App Store submissions, reviewing pull requests."
   ],
   skills: [
     { group: "Languages", items: "Swift · Objective-C (maintenance) · Swift Concurrency (async/await, actors)" },
@@ -862,22 +916,22 @@ const HIRE = [
   {
     tick: "Full-time",
     title: "Senior iOS roles",
-    text: "Joining a team as a senior iOS engineer — owning architecture, mentoring, and shipping releases. Strongest on products with real-time, offline, or security requirements."
+    text: "Joining a team as a senior engineer. Owning the architecture, reviewing other people's code, getting releases out. I'm most useful on apps with real-time, offline or security requirements."
   },
   {
     tick: "Contract",
     title: "Build an app from scratch",
-    text: "Taking an iOS product from an empty Xcode project to the App Store: architecture, UI, API integration, release setup and submission."
+    text: "Taking an app from an empty Xcode project to the App Store. Architecture, UI, the API work, release setup, submission."
   },
   {
     tick: "Contract",
-    title: "Real-time & chat features",
-    text: "Adding live messaging, socket-driven updates, offline queues, or push notifications to an existing app — the work I've done most of."
+    title: "Chat and real-time features",
+    text: "Adding live messaging, socket updates, offline queues or push notifications to an app you already have. This is the work I've done most of."
   },
   {
     tick: "Consulting",
-    title: "Modernise a legacy codebase",
-    text: "Migrating UIKit apps to SwiftUI, untangling architecture into MVVM, fixing performance problems, and setting standards a team can build on."
+    title: "Sort out an old codebase",
+    text: "Moving UIKit screens over to SwiftUI, untangling the architecture, fixing whatever's slow, and setting standards a team will actually follow."
   }
 ];
 
@@ -892,14 +946,14 @@ const EXPERIENCE = [
         title: "Senior iOS App Developer",
         dates: "Jul 2026 – Present",
         bullets: [
-          "Lead the development and management of HRMIS, a comprehensive Human Resource Management Information System for Punjab Police covering personnel management and administrative workflows.",
-          "Built the eAuction iOS application from scratch — a real-time platform for vehicle number plate bidding, with live bidding powered by WebSockets.",
-          "Built NHMP from scratch, a complete HR and operational management system for the National Highways & Motorway Police, with a modernised design and expanded feature set over the previous HRMIS solution.",
-          "Designed and developed the PERA iOS application with an entirely new UI/UX, improving usability and bringing it in line with current design standards.",
-          "Contributed to PULSE, a unified internal productivity platform, integrating the Chat, Task Management, Daak (documents), and Meetings modules.",
-          "Developed the Punjab Police Public application, a citizen-facing app for police services and public interaction.",
-          "Delivered the iOS build of the Crime Reporting & Management app (Flutter), handling build configuration and native integration.",
-          "Received the Emerging Talent Award for contribution to digital transformation initiatives, and an appreciation letter and reward for delivering a stable HRMIS iOS app."
+          "Lead the development and upkeep of HRMIS, the HR system Punjab Police use for personnel management and the admin around it.",
+          "Built the eAuction iOS app from scratch. It is a live auction platform for vehicle number plates, with the bidding running over WebSockets.",
+          "Built NHMP from scratch, an HR and operations system for the National Highways & Motorway Police, with a newer design and more features than the previous HRMIS build.",
+          "Designed and built the PERA iOS app with a completely new interface, which made it easier to use and brought it up to date.",
+          "Built the Chat, Task Management, Daak and Meetings modules in PULSE, the internal platform officers use day to day.",
+          "Built the Punjab Police Public app, which is the citizen-facing side of police services.",
+          "Delivered the iOS build of the Crime Reporting app, which was Flutter, handling the build configuration and native integration.",
+          "Received the Emerging Talent Award, plus an appreciation letter and reward for delivering a stable HRMIS iOS app."
         ]
       },
       {
@@ -920,9 +974,9 @@ const EXPERIENCE = [
         title: "Senior iOS Developer / iOS Team Lead",
         dates: "Add dates",
         bullets: [
-          "Led a team of iOS developers, setting the project structure and development standards the team built against.",
-          "Worked on LetWizard and MedEasy — architecture, new module development, and problem solving across both products.",
-          "Focused on breaking down complex requirements into deliverable modules and unblocking the team on technical problems."
+          "Led a team of iOS developers and set the project structure and standards they built against.",
+          "Worked on LetWizard and MedEasy: architecture, new modules, and whatever problems came up across both.",
+          "Broke large requirements down into modules the team could actually ship, and unblocked people when they got stuck."
         ]
       }
     ]
@@ -936,10 +990,10 @@ const EXPERIENCE = [
         title: "iOS Developer",
         dates: "2022 – 2023",
         bullets: [
-          "Worked on the Payment & Funds Transfer module of the Al Meezan Investment application, a digital investment platform for managing investments.",
-          "Built payment transfer workflows and transaction handling, and integrated and managed the payment-related APIs.",
-          "Implemented transaction validation and error-handling scenarios to make secure payment flows predictable under failure.",
-          "Collaborated with the team to keep consistency, reliability, and security aligned across the module, and contributed to improvements in the application's design."
+          "Worked on the Payment & Funds Transfer module of the Al Meezan Investment app.",
+          "Built the transfer flows and transaction handling, and integrated the payment APIs.",
+          "Wrote the validation and error handling so a payment that fails does so predictably.",
+          "Worked with the team to keep the module consistent and secure, and helped improve the app's design."
         ]
       }
     ]
@@ -961,15 +1015,15 @@ const EXPERIENCE = [
 const APPS = [
   {
     name: "HRMIS", company: "PITB · Punjab Police",
-    monogram: "HR", color: "#132430", icon: "",
+    monogram: "HR", color: "#111634", icon: "",
     metrics: [
       { value: "Thousands", label: "Active users" },
       { value: "Punjab Police", label: "Deployed force-wide" },
       { value: "Award", label: "Appreciation letter received" },
     ],
-    tagline: "A comprehensive Human Resource Management Information System for Punjab Police.",
-    problem: "HR operations, personnel records, and administrative workflows across a force this size were spread across manual processes that didn't scale.",
-    role: "Lead iOS developer — I lead development and ongoing management of the iOS application.",
+    tagline: "The HR system Punjab Police runs on.",
+    problem: "Personnel records, leave, postings and all the paperwork around them were being handled by hand across a force of thousands.",
+    role: "I lead the iOS side, both the original build and the work that keeps coming.",
     highlight: "",   /* ← the technical challenge you're proudest of solving here */
     stack: ["Swift", "UIKit", "MVVM", "REST"],
     screenshots: [],
@@ -977,25 +1031,25 @@ const APPS = [
   },
   {
     name: "eAuction", company: "PITB",
-    monogram: "EA", color: "#1B3543", icon: "",
+    monogram: "EA", color: "#232A5A", icon: "",
     metrics: [
       { value: "Thousands", label: "Bidders served" },
       { value: "Live", label: "Real-time bidding" },
     ],
-    tagline: "A real-time auction platform for vehicle number plate bidding.",
-    problem: "Number plate auctions needed to move online without losing the transparency of a live room — every bidder has to see the same current price at the same moment.",
-    role: "Built from scratch — sole iOS developer.",
-    highlight: "Live bidding runs over WebSockets, so a bid placed by any participant appears to everyone else immediately rather than on a refresh. That makes the auction transparent and keeps the bidding honest.",
+    tagline: "Live bidding for vehicle number plates.",
+    problem: "Number plate auctions had to move online without losing the thing that makes a live auction fair, which is that everyone sees the same price at the same moment.",
+    role: "Built it from scratch. I was the only iOS developer on it.",
+    highlight: "Bidding runs over WebSockets, so a bid placed by anyone shows up on everyone else's screen straight away instead of on a refresh. That is the whole thing. If bids arrive late, people lose auctions they had actually won.",
     stack: ["Swift", "WebSockets", "MVVM", "Real-time"],
     screenshots: [],
     links: []
   },
   {
     name: "NHMP", company: "PITB · Motorway Police",
-    monogram: "NH", color: "#22505F", icon: "",
-    tagline: "HR and operational management for the National Highways & Motorway Police.",
-    problem: "The existing HRMIS solution was dated and limited in what it could handle for a force operating across the motorway network.",
-    role: "Built from scratch — sole iOS developer.",
+    monogram: "NH", color: "#3A3A78", icon: "",
+    tagline: "HR and operations for the Motorway Police.",
+    problem: "The older HRMIS build was dated and didn't cover what a force spread across the motorway network actually needed.",
+    role: "Built from scratch, on my own.",
     highlight: "",   /* ← what made this harder than the previous system? */
     stack: ["Swift", "UIKit", "MVVM"],
     screenshots: [],
@@ -1003,20 +1057,20 @@ const APPS = [
   },
   {
     name: "PULSE", company: "PITB · Punjab Police",
-    monogram: "PU", color: "#2A6A7A", icon: "images/pulse-appicon.png",   // extension auto-detected
-    tagline: "A unified productivity platform for internal police communication and operations — messaging, attendance, leave, tasks, documents and meetings in one app.",
-    problem: "Internal communication, task assignment, document routing, meetings, attendance and leave were spread across separate channels and paper-based processes. Officers needed a single secure app that covered all of it, usable in the field on unreliable connections.",
-    role: "Key contributor — I integrated the Chat, Task Management, Daak (documents) and Meetings modules, and worked on attendance, leave, and secure sign-in.",
+    monogram: "PU", color: "#5B4BC4", icon: "images/pulse-appicon.png",   // extension auto-detected
+    tagline: "Messaging, attendance, leave, tasks and documents in one app for Punjab Police.",
+    problem: "Officers were using separate channels for messages, tasks, documents and meetings, and paper for attendance and leave. It all needed to be in one place, and it had to work in the field where the connection is unreliable.",
+    role: "I built the Chat, Task Management, Daak and Meetings modules, plus attendance, leave and sign-in.",
     built: [
-      "Live chat with real-time message delivery",
-      "Offline messaging — messages compose and send even without a connection",
-      "Push notifications for messages received while the app is backgrounded",
-      "Face-recognition sign-in matched against the employee record on the backend",
+      "Live chat over sockets",
+      "Offline messaging, so you can write with no signal and it sends later",
+      "Push notifications when the app is in the background",
+      "Face-recognition sign-in, checked against the employee record on the server",
       "Attendance tracking and summaries",
-      "Leave requests and approval workflow",
-      "Task management, Daak (document) routing, and Meetings"
+      "Leave requests and approvals",
+      "Task management, Daak document routing, and Meetings"
     ],
-    highlight: "Chat runs over WebSockets rather than polling, so a message reaches the other officer the moment it is sent instead of waiting for the next refresh. Because the app is used in the field, it had to stay useful without a connection: messages composed offline are held and delivered once the socket comes back, and push notifications carry conversations forward when the app is in the background. Sign-in was the other piece I'm most pleased with — instead of a password, the app captures the officer's face and matches it against the employee's face record held on the backend, which removes shared credentials from a security-sensitive environment while making daily access faster than typing anything.",
+    highlight: "Chat runs on WebSockets rather than polling, so messages arrive when they are sent. The harder part was everything around that. Officers use this out in the field, so a message written with no signal has to sit in a queue and send itself later, and push notifications have to carry the conversation when the app is in the background. Sign-in is the part I am happiest with. Instead of a password, the app takes a photo of the officer and checks it against the face record held on the server. That got rid of shared passwords, which matters in a police system, and it is quicker than typing anything.",
     stack: ["Swift", "WebSockets", "Offline messaging", "Push notifications", "Face recognition", "MVVM"],
     banner: "images/pulse-banner.png",   // extension auto-detected
     screenshots: [],                     // leave empty while a banner is set
@@ -1024,25 +1078,27 @@ const APPS = [
   },
   {
     name: "PERA", company: "PITB",
-    monogram: "PE", color: "#3D9AAC", icon: "images/pera-appicon.png",
-    tagline: "A modern HR solution rebuilt around a new user experience.",
-    problem: "The existing experience didn't match how people actually worked, and the interface had fallen behind current design standards.",
-    role: "Designed and developed the iOS application, including an entirely new UI/UX.",
+    monogram: "PE", color: "#7A6BFF", icon: "images/pera-appicon.png",
+    tagline: "An HR app rebuilt from the ground up.",
+    problem: "The old version didn't match how people actually worked, and it looked its age.",
+    role: "I designed and built the iOS app, including a completely new interface.",
     highlight: "",
     stack: ["Swift", "SwiftUI", "UI/UX"],
+    banner: "images/pera-banner.png",   // extension auto-detected
     screenshots: [],
+
     links: []
   },
   {
     name: "Police Public App", company: "PITB · Punjab Police",
-    monogram: "PP", color: "#B98A3E", icon: "",
+    monogram: "PP", color: "#3B9BFF", icon: "",
     metrics: [
       { value: "Thousands", label: "Citizens using it" },
       { value: "Public", label: "Citizen-facing service" },
     ],
-    tagline: "A public-facing app for citizen–police interaction and service delivery.",
-    problem: "Citizens had no direct digital route to police services, which put every request through in-person channels.",
-    role: "Developed the iOS application.",
+    tagline: "A public app for police services.",
+    problem: "There was no digital route to police services, so every request went through a counter.",
+    role: "Built the iOS app.",
     highlight: "",
     stack: ["Swift", "UIKit", "Public services"],
     screenshots: [],
@@ -1050,33 +1106,37 @@ const APPS = [
   },
   {
     name: "LetWizard", company: "Bizionic Technologies",
-    monogram: "LW", color: "#D6A24A", icon: "images/letwizard-appicon.png",
-    tagline: "Add a one-line description of what LetWizard does.",
+    monogram: "LW", color: "#FF5C82", icon: "images/letwizard-appicon.png",
+    tagline: "Add a line here about what LetWizard actually does.",
     problem: "",
-    role: "Led the iOS team — set the project structure and developed new modules.",
+    role: "Led the iOS team. I set the project structure and built new modules.",
     highlight: "",
     stack: ["Swift", "iOS"],
+    banner: "images/letwizard-banner.png",   // extension auto-detected
     screenshots: [],
+
     links: []
   },
   {
     name: "MedEasy", company: "Bizionic Technologies",
-    monogram: "ME", color: "#F2B24C", icon: "",
-    tagline: "Add a one-line description of what MedEasy does.",
+    monogram: "ME", color: "#FFB35C", icon: "",
+    tagline: "Add a line here about what MedEasy actually does.",
     problem: "",
-    role: "Led the iOS team — set the project structure and developed new modules.",
+    role: "Led the iOS team. I set the project structure and built new modules.",
     highlight: "",
     stack: ["Swift", "iOS"],
+    banner: "images/medeasy-banner.png",   // extension auto-detected
     screenshots: [],
+
     links: []
   },
   {
     name: "Al Meezan Investment", company: "ibex",
-    monogram: "AM", color: "#F7D08A", icon: "",
-    tagline: "A digital investment platform giving users a convenient, secure way to manage their investments.",
-    problem: "Moving money is the point at which an investment app either earns trust or loses it. Transfers had to be secure and predictable, and a failure had to leave the user certain about what had happened to their funds.",
-    role: "iOS developer on the payment and funds transfer module, working within the wider development team. I also contributed to improving the application's design.",
-    highlight: "I built the payment transfer workflows and the transaction handling around them, integrating and managing the payment APIs the module depends on. Most of the care went into the paths that aren't the happy one: transaction validation and error-handling for every scenario the API could return, so a transfer that can't complete fails clearly and recoverably instead of leaving someone unsure whether their money moved. Working across a shared module also meant keeping consistency, reliability, and security aligned with the rest of the team's work — valuable grounding in fintech, where payment processing, API integration, and secure financial operations leave no room for approximate behaviour.",
+    monogram: "AM", color: "#FFD09B", icon: "",
+    tagline: "An investment app for managing your money.",
+    problem: "Moving money is where an investment app either earns trust or loses it. Transfers had to be secure and predictable, and a failure had to leave the user in no doubt about what happened to their funds.",
+    role: "I worked on the payment and funds transfer module as part of the wider team, and on improving the design.",
+    highlight: "I built the transfer flows and the transaction handling behind them, and integrated the payment APIs. Most of the effort went on what happens when things go wrong. A transfer that fails has to fail in a way the user understands, otherwise they are left not knowing whether their money moved. So a lot of the work was validation and handling every error the API could return, not the path where everything works.",
     stack: ["Swift", "Payments", "API integration", "Transaction validation", "Fintech"],
     screenshots: [],
     links: []
@@ -1111,7 +1171,7 @@ function readable(hex){                       // pick ink or paper for text on t
     return s <= .03928 ? s/12.92 : Math.pow((s+.055)/1.055, 2.4);
   });
   const L = .2126*ch[0] + .7152*ch[1] + .0722*ch[2];
-  return L > .19 ? "#132430" : "#EAF2F5";
+  return L > .19 ? "#111634" : "#E9ECFA";
 }
 const sq = (item, cls) => {
   const mono = esc(item.monogram || item.name[0]);
@@ -1153,11 +1213,10 @@ $("#hName").textContent   = PROFILE.name;
     box.classList.remove("is-cutout","is-photo");
     const isCut = bi === 0 && !!PROFILE.cutout;
     box.classList.add(isCut ? "is-cutout" : "is-photo");
-    box.closest(".hero-photo")?.classList.toggle("photo-mode", !isCut);
+    
   };
   img.src = bases[0] + "." + exts[0];
   box.appendChild(img);
-  if (PROFILE.photoHeight) box.closest(".hero-photo")?.style.setProperty("--ph", PROFILE.photoHeight);
 })();
 
 /* ---------- clock ---------- */
@@ -1395,12 +1454,53 @@ const spy = new IntersectionObserver(es => {
 });
 
 /* ============================================================
+   THEME
+   ============================================================ */
+(function theme(){
+  const root = document.documentElement;
+  const btn  = document.getElementById("themeToggle");
+
+  const save = t => { try { localStorage.setItem("theme", t); } catch (e) {} };
+  const load = () => { try { return localStorage.getItem("theme"); } catch (e) { return null; } };
+
+  function apply(t){
+    root.dataset.theme = t;
+    if (btn) btn.setAttribute("aria-label",
+      t === "light" ? "Switch to dark theme" : "Switch to light theme");
+    window.dispatchEvent(new Event("themechange"));
+  }
+
+  /* saved choice wins; otherwise follow the operating system */
+  const saved = load();
+  apply(saved || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
+
+  btn?.addEventListener("click", () => {
+    const next = root.dataset.theme === "light" ? "dark" : "light";
+    apply(next);
+    save(next);
+  });
+
+  /* if the visitor hasn't chosen, keep following the system */
+  matchMedia("(prefers-color-scheme: light)").addEventListener?.("change", e => {
+    if (!load()) apply(e.matches ? "light" : "dark");
+  });
+})();
+
+/* ============================================================
    BACKGROUND — node network
    ============================================================ */
 (function network(){
   const cv = document.getElementById("net");
   if (!cv) return;
   const ctx = cv.getContext("2d", { alpha: true });
+  let LINE = "150,160,255", DOT = "rgba(170,180,255,.42)";
+  function readColours(){
+    const s = getComputedStyle(document.documentElement);
+    LINE = (s.getPropertyValue("--net-line") || LINE).trim();
+    DOT  = (s.getPropertyValue("--net-dot")  || DOT ).trim();
+  }
+  readColours();
+  window.addEventListener("themechange", readColours);
   const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   let w, hgt, dpr, nodes = [], raf = null;
 
@@ -1435,13 +1535,13 @@ const spy = new IntersectionObserver(es => {
         const d2 = dx*dx + dy*dy;
         if (d2 > LINK*LINK) continue;
         const t = 1 - Math.sqrt(d2) / LINK;
-        ctx.strokeStyle = `rgba(234,242,245,${(t * .17).toFixed(3)})`;
+        ctx.strokeStyle = `rgba(${LINE},${(t * .22).toFixed(3)})`;
         ctx.lineWidth = 1;
         ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
       }
     }
     for (const n of nodes){
-      ctx.fillStyle = "rgba(242,178,76,.34)";
+      ctx.fillStyle = DOT;
       ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, 6.284); ctx.fill();
     }
     raf = requestAnimationFrame(frame);
