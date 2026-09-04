@@ -879,7 +879,7 @@ const PROFILE = {
   photoHeight: "60vh",          // how tall you appear in the hero — try 50vh … 72vh
   photo:  "images/ahmed.jpg",   // extension is auto-detected — jpg, jpeg, png or webp all work
   resume: "images/resume.pdf",
-  email:  "you@example.com",
+  email:  "mahmedrival@gmail.com",
   lede:   "Senior iOS developer at PITB in Lahore. I write Swift with UIKit and SwiftUI. Most of what I've built is used every day by Punjab Police and other government departments.",
   stats: [
     { value: "10", label: "Apps shipped" },
@@ -889,7 +889,7 @@ const PROFILE = {
   socials: [
     { label: "GitHub",   url: "https://github.com/yourhandle" },
     { label: "LinkedIn", url: "https://www.linkedin.com/in/muhammad-ahmed-142b35211/" },
-    { label: "Email",    url: "mailto:you@example.com" }
+    { label: "Email",    url: "mailto:mahmedrival@gmail.com" }
   ],
   about: [
     "I've been at PITB for about four years. The apps I work on aren't the kind anyone downloads for fun. They're HR systems, an auction platform, citizen services. Things people have to use to get through a working day, which changes how you build them.",
@@ -957,10 +957,12 @@ const EXPERIENCE = [
         ]
       },
       {
-        title: "iOS App Developer",          /* ← confirm your earlier title */
-        dates: "Jan 2023 – Jul 2026",        /* ← confirm these dates */
+        title: "iOS Developer",
+        dates: "Jun 2023 – Jul 2026",
         bullets: [
-          "Add 2–3 lines here about what you did before the promotion."
+          "Built and maintained the HRMIS iOS app, the HR system used across Punjab Police for personnel records, leave and postings.",
+          "Built Mehfooz Karobar, an app that lets a buyer check whether something like a vehicle or gold has an FIR, a theft report or an open case against it before they pay for it.",
+          "Worked in Swift with UIKit and MVVM, taking features from requirement through to App Store release."
         ]
       }
     ]
@@ -975,7 +977,7 @@ const EXPERIENCE = [
         dates: "Add dates",
         bullets: [
           "Led a team of iOS developers and set the project structure and standards they built against.",
-          "Worked on LetWizard and MedEasy: architecture, new modules, and whatever problems came up across both.",
+          "Worked on LetWizard, a property marketplace with digital bidding for sales and rentals, and on MedEasy. Architecture, new modules, and whatever problems came up across both.",
           "Broke large requirements down into modules the team could actually ship, and unblocked people when they got stuck."
         ]
       }
@@ -1106,15 +1108,22 @@ const APPS = [
   },
   {
     name: "LetWizard", company: "Bizionic Technologies",
-    monogram: "LW", color: "#FF5C82", icon: "images/letwizard-appicon.png",
-    tagline: "Add a line here about what LetWizard actually does.",
-    problem: "",
-    role: "Led the iOS team. I set the project structure and built new modules.",
-    highlight: "",
-    stack: ["Swift", "iOS"],
+    monogram: "LW", color: "#D6A24A", icon: "images/letwizard-appicon.png",
+    tagline: "A property marketplace where buying, renting and bidding all happen in one place.",
+    problem: "Property deals here usually get settled in private, one conversation at a time, so nobody involved can see what anything is really worth. LetWizard moves the listings and the negotiation into the open, where owners, buyers, brokers, renters and accommodation providers are all working from the same information.",
+    role: "iOS team lead. I set the project structure the team built against and worked on new modules as the product grew.",
+    built: [
+      "Verified listings for property sales, rentals and accommodation",
+      "Digital bidding, so a price gets settled through open offers instead of a private back-and-forth",
+      "Agent Cooperation & Network (ACN), which lets brokers work a deal together and split the commission",
+      "Accommodation Rental Marketplace (ARMP), where providers list inventory such as hotel rooms and investors can buy and resell it",
+      "Genie AI tools: a property finder and an investment calculator",
+      "Cross-border listings, so buyers outside the country can take part"
+    ],
+    highlight: "",   /* what was the hardest part of this one for you? */
+    stack: ["Swift", "UIKit", "MVVM", "REST"],
     banner: "images/letwizard-banner.png",   // extension auto-detected
     screenshots: [],
-
     links: []
   },
   {
