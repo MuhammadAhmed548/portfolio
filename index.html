@@ -1016,18 +1016,80 @@ const EXPERIENCE = [
    ─────────────────────────────────────────────────────────────── */
 const APPS = [
   {
+    name: "PULSE", company: "PITB · Punjab Police",
+    monogram: "PU", color: "#5B4BC4", icon: "images/pulse-appicon.png",   // extension auto-detected
+    tagline: "Messaging, attendance, leave, tasks and documents in one app for Punjab Police.",
+    role: "I built the Chat, Task Management, Daak and Meetings modules, plus attendance, leave and sign-in.",
+    built: [
+      "Live chat over sockets",
+      "Offline messaging, so you can write with no signal and it sends later",
+      "Push notifications when the app is in the background",
+      "Face-recognition sign-in, checked against the employee record on the server",
+      "Attendance tracking and summaries",
+      "Leave requests and approvals",
+      "Task management, Daak document routing, and Meetings"
+    ],
+    stack: ["Swift", "WebSockets", "Offline messaging", "Push notifications", "Face recognition", "MVVM"],
+    banner: "images/pulse-banner.png",   // extension auto-detected
+    screenshots: [],                     // leave empty while a banner is set
+    links: []
+  },
+  {
+    name: "PERA", company: "PITB",
+    monogram: "PE", color: "#7A6BFF", icon: "images/pera-appicon.png",
+    tagline: "An HR app rebuilt from the ground up.",
+    role: "I designed and built the iOS app, including a completely new interface.",
+    stack: ["Swift", "SwiftUI", "UI/UX"],
+    banner: "images/pera-banner.png",   // extension auto-detected
+    screenshots: [],
+
+    links: []
+  },
+  {
     name: "HRMIS", company: "PITB · Punjab Police",
-    monogram: "HR", color: "#111634", icon: "",
+    monogram: "HR", color: "#111634", icon: "images/hrmis-appicon.png",
     metrics: [
       { value: "Thousands", label: "Active users" },
       { value: "Punjab Police", label: "Deployed force-wide" },
       { value: "Award", label: "Appreciation letter received" },
     ],
     tagline: "The HR system Punjab Police runs on.",
-    problem: "Personnel records, leave, postings and all the paperwork around them were being handled by hand across a force of thousands.",
     role: "I lead the iOS side, both the original build and the work that keeps coming.",
-    highlight: "",   /* ← the technical challenge you're proudest of solving here */
     stack: ["Swift", "UIKit", "MVVM", "REST"],
+    screenshots: [],
+    links: []
+  },
+  {
+    name: "LetWizard", company: "Bizionic Technologies",
+    monogram: "LW", color: "#D6A24A", icon: "images/letwizard-appicon.png",
+    tagline: "A property marketplace where buying, renting and bidding all happen in one place.",
+    role: "iOS team lead. I set the project structure the team built against and worked on new modules as the product grew.",
+    built: [
+      "Verified listings for property sales, rentals and accommodation",
+      "Digital bidding, so a price gets settled through open offers instead of a private back-and-forth",
+      "Agent Cooperation & Network (ACN), which lets brokers work a deal together and split the commission",
+      "Accommodation Rental Marketplace (ARMP), where providers list inventory such as hotel rooms and investors can buy and resell it",
+      "Genie AI tools: a property finder and an investment calculator",
+      "Cross-border listings, so buyers outside the country can take part"
+    ],
+    stack: ["Swift", "UIKit", "MVVM", "REST"],
+    banner: "images/letwizard-banner.png",   // extension auto-detected
+    screenshots: [],
+    links: []
+  },
+  {
+    name: "MedEasy", company: "Bizionic Technologies",
+    monogram: "ME", color: "#FFB35C", icon: "images/medeasy-appicon.png",
+    tagline: "See a doctor from your phone, booked and paid for in the app.",
+    role: "iOS team lead. I worked on the doctor search and listing, the chat, the video consultation, and the booking and payment flow.",
+    built: [
+      "Doctor listing with search, so you can find a doctor and connect from their profile",
+      "Video consultations inside the app",
+      "One-to-one chat over sockets",
+      "Payment taken up front, with the appointment slot reserved once it clears"
+    ],
+    stack: ["Swift", "UIKit", "WebRTC", "WebSockets", "Payments", "MVVM"],
+    banner: "images/medeasy-banner.png",   // extension auto-detected
     screenshots: [],
     links: []
   },
@@ -1039,9 +1101,7 @@ const APPS = [
       { value: "Live", label: "Real-time bidding" },
     ],
     tagline: "Live bidding for vehicle number plates.",
-    problem: "Number plate auctions had to move online without losing the thing that makes a live auction fair, which is that everyone sees the same price at the same moment.",
     role: "Built it from scratch. I was the only iOS developer on it.",
-    highlight: "Bidding runs over WebSockets, so a bid placed by anyone shows up on everyone else's screen straight away instead of on a refresh. That is the whole thing. If bids arrive late, people lose auctions they had actually won.",
     stack: ["Swift", "WebSockets", "MVVM", "Real-time"],
     screenshots: [],
     links: []
@@ -1050,45 +1110,9 @@ const APPS = [
     name: "NHMP", company: "PITB · Motorway Police",
     monogram: "NH", color: "#3A3A78", icon: "",
     tagline: "HR and operations for the Motorway Police.",
-    problem: "The older HRMIS build was dated and didn't cover what a force spread across the motorway network actually needed.",
     role: "Built from scratch, on my own.",
-    highlight: "",   /* ← what made this harder than the previous system? */
     stack: ["Swift", "UIKit", "MVVM"],
     screenshots: [],
-    links: []
-  },
-  {
-    name: "PULSE", company: "PITB · Punjab Police",
-    monogram: "PU", color: "#5B4BC4", icon: "images/pulse-appicon.png",   // extension auto-detected
-    tagline: "Messaging, attendance, leave, tasks and documents in one app for Punjab Police.",
-    problem: "Officers were using separate channels for messages, tasks, documents and meetings, and paper for attendance and leave. It all needed to be in one place, and it had to work in the field where the connection is unreliable.",
-    role: "I built the Chat, Task Management, Daak and Meetings modules, plus attendance, leave and sign-in.",
-    built: [
-      "Live chat over sockets",
-      "Offline messaging, so you can write with no signal and it sends later",
-      "Push notifications when the app is in the background",
-      "Face-recognition sign-in, checked against the employee record on the server",
-      "Attendance tracking and summaries",
-      "Leave requests and approvals",
-      "Task management, Daak document routing, and Meetings"
-    ],
-    highlight: "Chat runs on WebSockets rather than polling, so messages arrive when they are sent. The harder part was everything around that. Officers use this out in the field, so a message written with no signal has to sit in a queue and send itself later, and push notifications have to carry the conversation when the app is in the background. Sign-in is the part I am happiest with. Instead of a password, the app takes a photo of the officer and checks it against the face record held on the server. That got rid of shared passwords, which matters in a police system, and it is quicker than typing anything.",
-    stack: ["Swift", "WebSockets", "Offline messaging", "Push notifications", "Face recognition", "MVVM"],
-    banner: "images/pulse-banner.png",   // extension auto-detected
-    screenshots: [],                     // leave empty while a banner is set
-    links: []
-  },
-  {
-    name: "PERA", company: "PITB",
-    monogram: "PE", color: "#7A6BFF", icon: "images/pera-appicon.png",
-    tagline: "An HR app rebuilt from the ground up.",
-    problem: "The old version didn't match how people actually worked, and it looked its age.",
-    role: "I designed and built the iOS app, including a completely new interface.",
-    highlight: "",
-    stack: ["Swift", "SwiftUI", "UI/UX"],
-    banner: "images/pera-banner.png",   // extension auto-detected
-    screenshots: [],
-
     links: []
   },
   {
@@ -1099,53 +1123,16 @@ const APPS = [
       { value: "Public", label: "Citizen-facing service" },
     ],
     tagline: "A public app for police services.",
-    problem: "There was no digital route to police services, so every request went through a counter.",
     role: "Built the iOS app.",
-    highlight: "",
     stack: ["Swift", "UIKit", "Public services"],
     screenshots: [],
-    links: []
-  },
-  {
-    name: "LetWizard", company: "Bizionic Technologies",
-    monogram: "LW", color: "#D6A24A", icon: "images/letwizard-appicon.png",
-    tagline: "A property marketplace where buying, renting and bidding all happen in one place.",
-    problem: "Property deals here usually get settled in private, one conversation at a time, so nobody involved can see what anything is really worth. LetWizard moves the listings and the negotiation into the open, where owners, buyers, brokers, renters and accommodation providers are all working from the same information.",
-    role: "iOS team lead. I set the project structure the team built against and worked on new modules as the product grew.",
-    built: [
-      "Verified listings for property sales, rentals and accommodation",
-      "Digital bidding, so a price gets settled through open offers instead of a private back-and-forth",
-      "Agent Cooperation & Network (ACN), which lets brokers work a deal together and split the commission",
-      "Accommodation Rental Marketplace (ARMP), where providers list inventory such as hotel rooms and investors can buy and resell it",
-      "Genie AI tools: a property finder and an investment calculator",
-      "Cross-border listings, so buyers outside the country can take part"
-    ],
-    highlight: "",   /* what was the hardest part of this one for you? */
-    stack: ["Swift", "UIKit", "MVVM", "REST"],
-    banner: "images/letwizard-banner.png",   // extension auto-detected
-    screenshots: [],
-    links: []
-  },
-  {
-    name: "MedEasy", company: "Bizionic Technologies",
-    monogram: "ME", color: "#FFB35C", icon: "",
-    tagline: "Add a line here about what MedEasy actually does.",
-    problem: "",
-    role: "Led the iOS team. I set the project structure and built new modules.",
-    highlight: "",
-    stack: ["Swift", "iOS"],
-    banner: "images/medeasy-banner.png",   // extension auto-detected
-    screenshots: [],
-
     links: []
   },
   {
     name: "Al Meezan Investment", company: "ibex",
     monogram: "AM", color: "#FFD09B", icon: "",
     tagline: "An investment app for managing your money.",
-    problem: "Moving money is where an investment app either earns trust or loses it. Transfers had to be secure and predictable, and a failure had to leave the user in no doubt about what happened to their funds.",
     role: "I worked on the payment and funds transfer module as part of the wider team, and on improving the design.",
-    highlight: "I built the transfer flows and the transaction handling behind them, and integrated the payment APIs. Most of the effort went on what happens when things go wrong. A transfer that fails has to fail in a way the user understands, otherwise they are left not knowing whether their money moved. So a lot of the work was validation and handling every error the API could return, not the path where everything works.",
     stack: ["Swift", "Payments", "API integration", "Transaction validation", "Fintech"],
     screenshots: [],
     links: []
@@ -1291,11 +1278,9 @@ $("#projects").innerHTML = APPS.map(a => {
       ${a.metrics && a.metrics.length ? `<div class="p-metrics">${a.metrics.map((m,mi) =>
         `<div class="p-metric" style="--d:${360 + mi*120}ms"><b data-count="${esc(m.value)}">${esc(m.value)}</b><span>${esc(m.label)}</span></div>`
       ).join("")}</div>` : ""}
-      ${block("The problem", a.problem)}
       ${block("My role", a.role)}
       ${a.built && a.built.length ? `<div class="p-block" style="--d:600ms"><h4>What I built</h4><ul class="p-built">${
         a.built.map((b,bi) => `<li style="--d:${300 + bi*70}ms">${esc(b)}</li>`).join("")}</ul></div>` : ""}
-      ${block("The hard part", a.highlight, "p-hard")}
       ${a.stack && a.stack.length ? `<div class="chips">${a.stack.map((s,si) => `<span class="chip" style="--d:${480 + si*55}ms">${esc(s)}</span>`).join("")}</div>` : ""}
       ${a.links && a.links.length ? `<div class="p-links">${a.links.map(l =>
         `<a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg></a>`).join("")}</div>` : ""}
